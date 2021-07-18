@@ -61,7 +61,11 @@
                         </div>     
                         <!-- end page title --> 
 
-
+                        @if(session()->has('message'))
+                            <div class="alert alert-success">
+                                {{ session()->get('message') }}
+                            </div>
+                        @endif
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
@@ -73,6 +77,7 @@
                                                 <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                                     <thead>
                                                         <tr>
+                                                            <th></th>
                                                             <th>Question</th>
                                                             <th>Marks</th>
                                                             <th>Status</th>
@@ -82,85 +87,18 @@
                                                 
                                                 
                                                     <tbody>
+                                                    @foreach($questionlist as $key => $questionlistval)
                                                         <tr>
-                                                            <td>Tiger Nixon</td>
-                                                            <td>System Architect</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>61</td>
+                                                            <td>{{$questionlist->firstItem()+$key}}</td>
+                                                            <td>{{$questionlistval->question}}</td>
+                                                            <td>{{$questionlistval->marks}}</td>
+                                                            <td>{{$questionlistval->status}}</td>
+                                                            <td class="table-action">
+                                                                <a href="" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                                <a href="" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                            </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>Garrett Winters</td>
-                                                            <td>Accountant</td>
-                                                            <td>Tokyo</td>
-                                                            <td>63</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ashton Cox</td>
-                                                            <td>Junior Technical Author</td>
-                                                            <td>San Francisco</td>
-                                                            <td>66</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Cedric Kelly</td>
-                                                            <td>Senior Javascript Developer</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>22</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Airi Satou</td>
-                                                            <td>Accountant</td>
-                                                            <td>Tokyo</td>
-                                                            <td>33</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Brielle Williamson</td>
-                                                            <td>Integration Specialist</td>
-                                                            <td>New York</td>
-                                                            <td>61</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Herrod Chandler</td>
-                                                            <td>Sales Assistant</td>
-                                                            <td>San Francisco</td>
-                                                            <td>59</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Rhona Davidson</td>
-                                                            <td>Integration Specialist</td>
-                                                            <td>Tokyo</td>
-                                                            <td>55</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Colleen Hurst</td>
-                                                            <td>Javascript Developer</td>
-                                                            <td>San Francisco</td>
-                                                            <td>39</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Sonya Frost</td>
-                                                            <td>Software Engineer</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>23</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Jena Gaines</td>
-                                                            <td>Office Manager</td>
-                                                            <td>London</td>
-                                                            <td>30</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Brenden Wagner</td>
-                                                            <td>Software Engineer</td>
-                                                            <td>San Francisco</td>
-                                                            <td>28</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Fiona Green</td>
-                                                            <td>Chief Operating Officer (COO)</td>
-                                                            <td>San Francisco</td>
-                                                            <td>48</td>
-                                                        </tr>
-                                                        
+                                                    @endforeach    
                                                     </tbody>
                                                 </table>                                           
                                             </div> <!-- end preview-->

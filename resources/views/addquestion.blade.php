@@ -54,7 +54,8 @@
                             </div>
                         </div>     
                         <!-- end page title --> 
-
+                        
+                        
                         <div class="row">
                                 <div class="col-12">
                                     <div class="card">
@@ -63,23 +64,27 @@
 
                                             <div class="tab-content">
                                                 <div class="tab-pane show active" id="form-row-preview">
-                                                    <form>
+                                                    <form method="POST" action="{{ route('createQuestion') }}"  enctype="multipart/form-data">
+                                                    {{ csrf_field() }}
                                                         <div class="mb-3">
                                                             <label for="inputPassword4" class="form-label">Question<span style="color:red"> * </span></label>
-                                                            <textarea class="form-control" id="seodescription" rows="4" name="seodescription"></textarea>
+                                                            <textarea class="form-control" id="seodescription" rows="4" name="question"></textarea>
+                                                            <span style="color:red;">{{ $errors->first('question') }}</span>
                                                         </div>
                                                         <div class="row g-2">
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputEmail4" class="form-label">Marks<span style="color:red"> * </span></label>
                                                                 <input type="text" class="form-control" id="inputEmail4" name="marks">
+                                                                <span style="color:red;">{{ $errors->first('marks') }}</span>
                                                             </div>
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputPassword4" class="form-label">Status</label>
-                                                                <select class="form-select" id="example-select" name="category">
+                                                                <select class="form-select" id="example-select" name="status">
                                                                     <option value=""> </option>
                                                                     <option value="Active">Active</option>
                                                                     <option value="Inactive">Inactive</option>
                                                                 </select>
+                                                                <span style="color:red;">{{ $errors->first('status') }}</span>
                                                             </div>
                                                         </div>
 
@@ -90,21 +95,21 @@
                                                         <div class="row g-2">
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputPassword4" class="form-label">Answer<span style="color:red"> * </span></label>
-                                                                <textarea class="form-control" id="answer1" rows="4" name="answer1"></textarea>
+                                                                <textarea class="form-control" id="answer1" rows="4" name="answer[]"></textarea>
                                                             </div>
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputPassword4" class="form-label">Answer<span style="color:red"> * </span></label>
-                                                                <textarea class="form-control" id="answer2" rows="4" name="answer2"></textarea>
+                                                                <textarea class="form-control" id="answer2" rows="4" name="answer[]"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="row g-2">
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputPassword4" class="form-label">Answer<span style="color:red"> * </span></label>
-                                                                <textarea class="form-control" id="answer3" rows="4" name="answer3"></textarea>
+                                                                <textarea class="form-control" id="answer3" rows="4" name="answer[]"></textarea>
                                                             </div>
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputPassword4" class="form-label">Answer<span style="color:red"> * </span></label>
-                                                                <textarea class="form-control" id="answer4" rows="4" name="answer4"></textarea>
+                                                                <textarea class="form-control" id="answer4" rows="4" name="answer[]"></textarea>
                                                             </div>
                                                         </div>
             
@@ -248,7 +253,7 @@
         <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
         
         <script>
-           CKEDITOR.replace('seodescription');answer1
+           CKEDITOR.replace('seodescription');
            CKEDITOR.replace('answer1');
            CKEDITOR.replace('answer2');
            CKEDITOR.replace('answer3');

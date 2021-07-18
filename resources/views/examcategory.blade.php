@@ -54,6 +54,7 @@
                         </div>     
                         <!-- end page title --> 
 
+                        
                         <div class="row">
                                 <div class="col-12">
                                     <div class="card">
@@ -62,14 +63,17 @@
 
                                             <div class="tab-content">
                                                 <div class="tab-pane show active" id="form-row-preview">
-                                                    <form>
+                                                    <form  method="POST" action="{{ route('addExamcategory') }}"  enctype="multipart/form-data">
+                                                    {{ csrf_field() }}
                                                         <div class="mb-3">
                                                             <label for="inputPassword4" class="form-label">Name</label>
-                                                            <input type="text" class="form-control" id="inputEmail4" name="name" placeholder="Category Name">
+                                                            <input type="text" class="form-control" id="inputEmail4" name="category_name" placeholder="Category Name">
+                                                            <span style="color:red;">{{ $errors->first('category_name') }}</span>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="inputPassword4" class="form-label">Description</label>
                                                             <textarea class="form-control" name="description" style="height: 150px;"></textarea>
+                                                            <span style="color:red;">{{ $errors->first('description') }}</span>
                                                         </div>
             
                                                         <button type="submit" class="btn btn-primary" style="float:right;">Save</button>

@@ -62,22 +62,23 @@
 
                                             <div class="tab-content">
                                                 <div class="tab-pane show active" id="form-row-preview">
-                                                    <form>
+                                                    <form  method="POST" action="{{ route('createExam') }}"  enctype="multipart/form-data">
+                                                    {{ csrf_field() }}
                                                         <div class="row g-2">
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputEmail4" class="form-label">Title</label>
                                                                 <input type="text" class="form-control" id="inputEmail4" name="title" placeholder="Exam Title">
+                                                                <span style="color:red;">{{ $errors->first('title') }}</span>
                                                             </div>
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputPassword4" class="form-label">Category</label>
                                                                 <select class="form-select" id="example-select" name="category">
-                                                                    <option> </option>
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                    <option>4</option>
-                                                                    <option>5</option>
+                                                                    <option value=""> </option>
+                                                                    @foreach($examcategorydata as $examcategorydataval)
+                                                                        <option value="{{ $examcategorydataval->id}}">{{ $examcategorydataval->category_name}}</option>
+                                                                    @endforeach
                                                                 </select>
+                                                                <span style="color:red;">{{ $errors->first('category') }}</span>
                                                             </div>
                                                         </div>
 
@@ -85,25 +86,29 @@
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputEmail4" class="form-label">Duration (In minutes)</label>
                                                                 <input type="text" class="form-control" id="inputEmail4" name="duration">
+                                                                <span style="color:red;">{{ $errors->first('duration') }}</span>
                                                             </div>
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputPassword4" class="form-label">Number of questions</label>
                                                                 <input type="text" class="form-control" id="inputEmail4" name="noquestion">
+                                                                <span style="color:red;">{{ $errors->first('noquestion') }}</span>
                                                             </div>
                                                         </div>
 
                                                         <div class="row g-2">
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputEmail4" class="form-label">Passing Marks</label>
-                                                                <input type="text" class="form-control" id="inputEmail4" name="pmarks">
+                                                                <input type="text" class="form-control" id="inputEmail4" name="passmarks">
+                                                                <span style="color:red;">{{ $errors->first('passmarks') }}</span>
                                                             </div>
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputPassword4" class="form-label">Status</label>
                                                                 <select class="form-select" id="example-select" name="status">
-                                                                    <option> </option>
+                                                                    <option value=""> </option>
                                                                     <option value="Active">Active</option>
                                                                     <option value="InActive">InActive</option>
                                                                 </select>
+                                                                <span style="color:red;">{{ $errors->first('status') }}</span>
                                                             </div>
                                                         </div>
             
@@ -111,14 +116,16 @@
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputEmail4" class="form-label">Type</label>
                                                                 <select class="form-select" id="example-select" name="type">
-                                                                    <option> </option>
+                                                                    <option value=""> </option>
                                                                     <option value="Paid">Paid</option>
                                                                     <option value="Free">Free</option>
                                                                 </select>
+                                                                <span style="color:red;">{{ $errors->first('type') }}</span>
                                                             </div>
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputPassword4" class="form-label">Cost</label>
                                                                 <input type="text" class="form-control" id="inputEmail4" name="cost">
+                                                                <span style="color:red;">{{ $errors->first('cost') }}</span>
                                                             </div>
                                                         </div>
 
@@ -126,16 +133,19 @@
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputEmail4" class="form-label">Available From</label>
                                                                 <input type="date" class="form-control" id="inputEmail4" name="fromdate">
+                                                                <span style="color:red;">{{ $errors->first('fromdate') }}</span>
                                                             </div>
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputPassword4" class="form-label">Available To</label>
                                                                 <input type="date" class="form-control" id="inputEmail4" name="todate">
+                                                                <span style="color:red;">{{ $errors->first('todate') }}</span>
                                                             </div>
                                                         </div>
 
                                                         <div class="mb-3">
                                                             <label for="inputPassword4" class="form-label">Instruction</label>
                                                             <textarea class="form-control" name="instruction" style="height: 150px;"></textarea>
+                                                            <span style="color:red;">{{ $errors->first('instruction') }}</span>
                                                         </div>
             
                                                         <button type="submit" class="btn btn-primary" style="float:right;">Save</button>
@@ -148,7 +158,7 @@
                                         </div> <!-- end card-body -->
                                     </div> <!-- end card-->
                                 </div> <!-- end col -->
-                            </div>
+                        </div>
 
                             
                         </div> 

@@ -12,10 +12,9 @@
                                     <span class="account-user-avatar"> 
                                         <img src="{{ url('assets/images/users/avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
                                     </span>
-                                    <span>
-                                        <span class="account-user-name">Dominic Keller</span>
-                                        <span class="account-position">Founder</span>
-                                    </span>
+                                    
+                                        <span class="account-user-name">{{Auth()->user()->name }}</span>
+                                    
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
                                     <!-- item-->
@@ -30,7 +29,7 @@
                                     </a>
 
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <a href="{{ route('logoutdata') }}" class="dropdown-item notify-item">
                                         <i class="mdi mdi-logout me-1"></i>
                                         <span>Logout</span>
                                     </a>

@@ -44,10 +44,13 @@
                                         <a href="{{ route('addexam') }}">Add Exam</a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('examlist') }}">Exam List</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('examcategory') }}">Exam Category</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('examlist') }}">Exam List</a>
+                                        <a href="{{ route('categorylist') }}">Category List</a>
                                     </li>
                                     <li>
                                         <a href="apps-ecommerce-orders-details.html">Exam Completed</a>
@@ -77,12 +80,12 @@
                             </div>
                         </li>
 
-                        <li class="side-nav-item">
+                        <!-- <li class="side-nav-item">
                             <a  href="#"  class="side-nav-link">
                                 <i class="uil-user-plus"></i>
                                 <span> Users </span>
                             </a>
-                        </li>
+                        </li> -->
 
                         <li class="side-nav-item">
                             <a href="#" class="side-nav-link">
@@ -100,13 +103,13 @@
                             <div class="collapse" id="sidebarSetting">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="apps-projects-list.html">Webiste Setting</a>
+                                        <a href="{{ route('websitesetting') }}">Webiste Setting</a>
                                     </li>
                                     <li>
-                                        <a href="apps-projects-details.html">Page Setting</a>
+                                        <a href="{{ route('pagesetting') }}">Page Setting</a>
                                     </li>
                                     <li>
-                                        <a href="apps-projects-gantt.html">Social Setting</a>
+                                        <a href="{{ route('socialsetting') }}">Social Setting</a>
                                     </li>
                                 </ul>
                             </div>
@@ -114,7 +117,7 @@
                         <br>
                         <li class="side-nav-title side-nav-item">Account Setting</li>
                         <li class="side-nav-item">
-                            <a href="#" class="side-nav-link">
+                            <a href="{{ route('profile') }}" class="side-nav-link">
                                 <i class="uil-user-square"></i>
                                 <span> Profile </span>
                             </a>

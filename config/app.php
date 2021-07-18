@@ -52,9 +52,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost/examportal'),
+    'url' => env('APP_URL', 'http://localhost/systemonlineportal'),
 
-    'asset_url' => env('ASSET_URL','http://localhost/examportal/public'),
+    'asset_url' => env('ASSET_URL','http://localhost/systemonlineportal/public'),
 
     /*
     |--------------------------------------------------------------------------
