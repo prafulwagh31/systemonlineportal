@@ -58,7 +58,7 @@ Route::get('socialsetting', [Controller::class, 'socialsetting'])->name('socials
 Route::get('profile', [Controller::class, 'profile'])->name('profile');
 Route::get('exam/{id}', [ExamController::class, 'exam'])->name('exam');
 Route::post('question/{id}', [ExamController::class, 'show'])->name('question');
-Route::post('instruction', [ExamController::class, 'instruction'])->name('instruction');
+Route::get('instruction', [ExamController::class, 'instruction'])->name('instruction');
 Route::get('final-answer', [ExamController::class, 'examFinal'])->name('examFinal');
 Route::get('final', [ExamController::class, 'final'])->name('final');
 

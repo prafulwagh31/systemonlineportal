@@ -54,7 +54,7 @@
 
       <div class="me-md-auto text-center text-md-start">
         <div class="copyright">
-         2021 &copy; Copyright <strong><a href="https://bootstrapmade.com/"><span>Strator Technology</span></a></strong>. All Rights Reserved
+         2021 &copy; Copyright. All Rights Reserved
         </div>
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">

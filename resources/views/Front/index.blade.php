@@ -169,7 +169,7 @@
 
           </div>
         </div>
-        <a href="{{route('exam', ['id' => 1])}}">Next</a>
+        <a href="{{route('instruction')}}">Next</a>
       </div>
     </section><!-- End About Section -->
 
