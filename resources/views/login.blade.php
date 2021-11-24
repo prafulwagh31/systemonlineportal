@@ -195,7 +195,7 @@ body {
           @endif
           <div class="card-body">
             <h5 class="card-title text-center">Login</h5>
-            <form class="form-signin" method="POST" action="{{ route('user.handleLogin') }}">
+            <form class="form-signin" method="POST" action="{{ route('admin.handleLogin') }}">
             {{ csrf_field() }}
               <div class="form-label-group">
                 <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Enter Email">

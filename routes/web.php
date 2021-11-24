@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AdminAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ExamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +20,13 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('home', [Controller::class, 'home'])->name('home');
+Route::get('home', [Controller::class, 'home','middleware' => 'auth'])->name('home');
 
 Route::get('registerdata', [AuthController::class, 'createRegister'])->name('registerdata');
 Route::post('registerdata', [AuthController::class, 'storeRegister'])->name('storeregister');
 
-Route::get('logindata', [AuthController::class, 'createLogin'])->name('logindata');
-Route::post('logindata', [AuthController::class, 'createauthenticate'])->name('storelogin');
-Route::get('logoutdata', [AuthController::class, 'createlogout'])->name('logoutdata');
+
+
 
 
 /*************** Exam Route ********************* */
@@ -55,8 +56,11 @@ Route::get('socialsetting', [Controller::class, 'socialsetting'])->name('socials
 
 
 Route::get('profile', [Controller::class, 'profile'])->name('profile');
-
-
+Route::get('exam/{id}', [ExamController::class, 'exam'])->name('exam');
+Route::post('question/{id}', [ExamController::class, 'show'])->name('question');
+Route::post('instruction', [ExamController::class, 'instruction'])->name('instruction');
+Route::get('final-answer', [ExamController::class, 'examFinal'])->name('examFinal');
+Route::get('final', [ExamController::class, 'final'])->name('final');
 
 
 
@@ -68,6 +72,32 @@ Route::get('/', [FrontController::class, 'createHome'])->name('index');
 Route::get('register', [RegisterController::class, 'createRegister'])->name('register');
 Route::post('register', [RegisterController::class, 'storeRegister'])->name('store');
 
-Route::get('login', [LoginController::class, 'createLogin'])->name('login');
-Route::post('login', [LoginController::class, 'createauthenticate'])->name('login');
-Route::get('logout', [LoginController::class, 'createlogout'])->name('logout');
+// Route::get('login', [LoginController::class, 'createLogin'])->name('login');
+// Route::post('login', [LoginController::class, 'createauthenticate'])->name('login');
+Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
+
+
+Route::get('/login', [LoginController::class, 'login'])
+    ->name('user.login');
+Route::post('/login', [LoginController::class, 'handleLogin'])
+    ->name('user.handleLogin');
+Route::get('/logout', [LoginController::class, 'logout'])
+    ->name('user.logout');
+
+
+
+Route::get('admin/login', [AdminAuthController::class, 'login'])
+    ->name('admin.login');
+Route::post('admin/login', [AdminAuthController::class, 'handleLogin'])
+    ->name('admin.handleLogin');
+Route::get('admin/logout', [AdminAuthController::class, 'logout'])
+    ->name('admin.logout');
+
+
+    // Route::get('/', [UserAuthController::class, 'index'])
+    // ->name('user.home')
+    // ->middleware('auth:web');
+
+Route::get('admin/', [AdminAuthController::class, 'index'])
+    ->name('admin.home')
+    ->middleware('auth:webadmin');

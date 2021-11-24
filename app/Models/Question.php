@@ -11,4 +11,14 @@ class Question extends Model
 
     protected $table = 'question';
     protected $fillable = ['question', 'marks', 'status'];
+
+    public function next()
+    {
+        return static::where($this->getKeyName(), '=', $this->getKey())->first();
+    }
+
+    public function answers()
+    {
+        return $this->belongsTo(Questionwithanswer::class,'id','questionid');
+    }
 }

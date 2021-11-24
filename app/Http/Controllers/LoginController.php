@@ -13,11 +13,11 @@ use Auth;
 class LoginController extends BaseController
 {
 
-    public function createLogin()
+    public function login()
     {
       return view('Front.login');
     }
-    public function createauthenticate(Request $request)
+    public function handleLogin(Request $request)
     {
         $request->validate([
             'email' => 'required',
@@ -27,10 +27,21 @@ class LoginController extends BaseController
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/home');
+            if (Auth::user()->id) {
+                return redirect()->intended('/');
+            }else
+            {
+                return redirect()->route('index');
+            }
         }
         return redirect('login')->with('error', 'Oppes! You have entered invalid credentials');
     }
 
-    
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('login');
+    }
+
+
 }

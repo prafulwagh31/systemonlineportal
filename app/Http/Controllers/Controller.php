@@ -132,11 +132,13 @@ class Controller extends BaseController
     /*************** Exam Question ********************* */
     public function addquestion()
     {
-      return view('addquestion');
+        $exams = Exam::get();
+        return view('addquestion', compact('exams'));
     }
     public function createQuestion(Request $request)
     {
       $data = $request->validate([
+        'exam' => 'required',
         'question' => 'required',
         'marks' => 'required',
         'status' => 'required',

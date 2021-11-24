@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
         <meta charset="utf-8" />
         <title>Add Question | Exam Portal</title>
@@ -15,8 +15,8 @@
         <link href="{{ url('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
         <link href="{{ url('assets/css/app-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" />
 
-        
-        
+
+
     </head>
 
     <body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
@@ -52,10 +52,10 @@
                                     <h4 class="page-title">Add Question</h4>
                                 </div>
                             </div>
-                        </div>     
-                        <!-- end page title --> 
-                        
-                        
+                        </div>
+                        <!-- end page title -->
+
+
                         <div class="row">
                                 <div class="col-12">
                                     <div class="card">
@@ -67,10 +67,20 @@
                                                     <form method="POST" action="{{ route('createQuestion') }}"  enctype="multipart/form-data">
                                                     {{ csrf_field() }}
                                                         <div class="mb-3">
+                                                            <label for="inputPassword4" class="form-label">Exam<span style="color:red"> * </span></label>
+                                                            <select name="exam" id="exam" class="form-control">
+                                                                @foreach ($exams as $exam)
+                                                                    <option value="{{ $exam->getKey() }}">{{ $exam->title }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            <span style="color:red;">{{ $errors->first('exam') }}</span>
+                                                        </div>
+                                                        <div class="mb-3">
                                                             <label for="inputPassword4" class="form-label">Question<span style="color:red"> * </span></label>
                                                             <textarea class="form-control" id="seodescription" rows="4" name="question"></textarea>
                                                             <span style="color:red;">{{ $errors->first('question') }}</span>
                                                         </div>
+
                                                         <div class="row g-2">
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputEmail4" class="form-label">Marks<span style="color:red"> * </span></label>
@@ -112,12 +122,12 @@
                                                                 <textarea class="form-control" id="answer4" rows="4" name="answer[]"></textarea>
                                                             </div>
                                                         </div>
-            
+
                                                         <button type="submit" class="btn btn-primary" style="float:right;">Save</button>
-                                                    </form>                      
+                                                    </form>
                                                 </div> <!-- end preview-->
-                                            
-                                               
+
+
                                             </div> <!-- end tab-content-->
 
                                         </div> <!-- end card-body -->
@@ -125,8 +135,8 @@
                                 </div> <!-- end col -->
                             </div>
 
-                            
-                        </div> 
+
+                        </div>
                     <!-- container -->
 
                 </div> <!-- content -->
@@ -176,7 +186,7 @@
                         <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="dark" id="dark-mode-check">
                         <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
                     </div>
-       
+
 
                     <!-- Width -->
                     <h5 class="mt-4">Width</h5>
@@ -190,7 +200,7 @@
                         <input class="form-check-input" type="checkbox" name="width" value="boxed" id="boxed-check">
                         <label class="form-check-label" for="boxed-check">Boxed</label>
                     </div>
-        
+
 
                     <!-- Left Sidebar-->
                     <h5 class="mt-4">Left Sidebar</h5>
@@ -227,7 +237,7 @@
 
                     <div class="d-grid mt-4">
                         <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
-            
+
                         <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
                             class="btn btn-danger mt-3" target="_blank"><i class="mdi mdi-basket me-1"></i> Purchase Now</a>
                     </div>
@@ -251,7 +261,7 @@
         <script src="{{ url('assets/js/pages/demo.dashboard-projects.js') }}"></script>
         <!-- end demo js-->
         <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
-        
+
         <script>
            CKEDITOR.replace('seodescription');
            CKEDITOR.replace('answer1');

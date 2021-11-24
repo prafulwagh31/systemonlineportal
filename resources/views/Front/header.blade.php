@@ -11,7 +11,7 @@
           <li><a href="about.html">Exam</a></li>
           <li><a href="courses.html">About Us</a></li>
           <li><a href="trainers.html">Contact Us</a></li>
-          <li><a href="{{ route('login') }}">Login</a></li>
+          <li><a href="{{ route('admin.login') }}">Login</a></li>
           <li><a href="{{ route('register') }}">Signup</a></li>
           <!-- <li class="dropdown"><a href="#"><span>Drop Down</span><i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -27,4 +27,3 @@
 
     </div>
 </header>
-  
