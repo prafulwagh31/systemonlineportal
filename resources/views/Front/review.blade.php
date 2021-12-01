@@ -43,7 +43,7 @@
                 <h2></h2>
                 <p>Review</p>
               </div>
-                <form action="" method="POST">
+                <form action="{{ route('final') }}" method="POST">
                     @csrf
                     <div class="row" data-aos="zoom-in" data-aos-delay="100">
 

@@ -26,7 +26,8 @@
 <style type="text/css">
     .tests
     {
-        background-color: #5fcf80;
+        background-color: #9edfb1;
+        padding: 5px;
     }
 </style>
 <body>
@@ -37,7 +38,7 @@
          <div class="leftMid" >
             <div class="panel-body" style="margin-top: 50px;">
                <div>
-                  <div class="tests" style="border-radius:100px;">
+                  <div class="tests">
                       <p class="text-center"><strong>Online Test</strong></p>
                       <p class="text-center"><strong>Computer Science Engineering</strong></p>
                       <p> </p>

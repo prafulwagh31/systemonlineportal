@@ -10,6 +10,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB as FacadesDB;
 
 class ExamController extends BaseController
@@ -34,6 +35,9 @@ class ExamController extends BaseController
         {
             return redirect()->route('examFinal');
         }else{
+
+
+
             $answer = $question->answers()->get();
             $question_list = Question::get();
             return view('Front.question', [
@@ -44,8 +48,9 @@ class ExamController extends BaseController
         }
 
     }
-    public  function exam($id)
+    public  function exam(Request $request,$id)
     {
+
         $question = Question::find($id);
         $answer = $question->answers()->get();
         $question_list = Question::get();
@@ -75,6 +80,9 @@ class ExamController extends BaseController
 
     public function final()
     {
+        Auth::logout();
         return view('Front.final');
     }
+
+
 }

@@ -11,12 +11,21 @@
           <li><a href="#">Exam</a></li>
           <li><a href="#">About Us</a></li>
           <li><a href="#">Contact Us</a></li>
+          @if(\Illuminate\Support\Facades\Auth::user())
+          <li class="dropdown"><a href="#"><span><i class="fa fa-user"></i>{{ Auth::user()->name}}</span></a>
+            <ul>
+              <li><a href="{{ route('admin.logout') }}">logout</a></li>
+            </ul>
+          </li>
+          @else
           <li class="dropdown"><a href="#"><span>Login</span><i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{{ route('admin.login') }}">Admin Login</a></li>
               <li><a href="{{ route('user.login') }}">User Login</a></li>
             </ul>
           </li>
+          @endif
+
           <li><a href="{{ route('register') }}">Signup</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

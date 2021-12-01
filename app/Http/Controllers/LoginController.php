@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use DB;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends BaseController
 {
@@ -28,7 +28,7 @@ class LoginController extends BaseController
 
         if (Auth::attempt($credentials)) {
             if (Auth::user()->id) {
-                return redirect()->intended('/');
+                return redirect()->intended('/instruction');
             }else
             {
                 return redirect()->route('index');

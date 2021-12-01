@@ -56,14 +56,17 @@
 
                      <input type="hidden" name="user_id" value="1">
                         <input type="hidden" name="question" value="{{ $question->getKey()}}">
-                      <div class="trainer d-flex justify-content-between align-items-center">
-                        <div class="trainer-profile ">
-                            @foreach ($answer as $answer_val)
-                            <div class="col-lg-12"><p ><input type="radio" name="answer" id="answer" value="{{ $answer_val->id}}"> &nbsp;&nbsp;&nbsp;&nbsp;{{ strip_tags($answer_val->answer) }}</p></div>
-                            @endforeach
-                        </div>
+                        <div class="trainer d-flex justify-content-between align-items-center">
+                            <div class="trainer-profile ">
+                                @foreach ($answer as $answer_val)
+                                <div class="col-lg-12"><p ><input type="radio" name="answer" id="answer" value="{{ $answer_val->id}}"> &nbsp;&nbsp;&nbsp;&nbsp;{{ strip_tags($answer_val->answer) }}</p></div>
+                                @endforeach
+                            </div>
 
-                      </div>
+                        </div>
+                        @error('answer')
+                            <span style="color:red;">Please select answer and proceed</span>
+                        @enderror
                     </div>
                   </div>
                   <button type="submit" class="btn btn-primary " style="margin-top:20px;float:right">Next</button>
