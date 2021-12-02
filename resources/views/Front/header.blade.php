@@ -1,16 +1,17 @@
+
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="{{ route('index') }}">Mentor</a></h1>
+      <!-- <h1 class="logo me-auto"><a href="{{ route('index') }}">Mentor</a></h1> -->
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+       <a href="{{ route('index') }}" class="logo me-auto"><img src="{{ url('frontassets/img/rpgplogo.png') }}" alt="" class="img-fluid"></a>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a href="{{ route('index') }}">Home</a></li>
-          <li><a href="#">Exam</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="{{ route('aboutus') }}">About Us</a></li>
+          <li><a href="{{ route('termcondition') }}">Terms & Condition</a></li>
+          <li><a href="{{ route('faq') }}">FAQ</a></li>
           @if(\Illuminate\Support\Facades\Auth::user())
           <li class="dropdown"><a href="#"><span><i class="fa fa-user"></i>{{ Auth::user()->name}}</span></a>
             <ul>

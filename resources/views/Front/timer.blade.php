@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-10"><h1 class="logo me-auto"><a href="#">Online Test</a></h1>
                 <i class="bi bi-list mobile-nav-toggle"></i></div>
-            <div class="col-md-2" style="border-radius: 27%;border: 1px solid;background-color: #c71111;color: #fff;">
+            <div class="col-md-2" style="border-radius: 27%;border: 1px solid;background-color: #dd137b;color: #fff;">
                 <center>Time Left</center>
                 <div id="time" style="text-align: center;"></div>
             </div>

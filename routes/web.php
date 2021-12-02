@@ -62,6 +62,9 @@ Route::get('socialsetting', [Controller::class, 'socialsetting'])->name('socials
 /********************************************* Frontwebsite Route *************************************/
 
 Route::get('/', [FrontController::class, 'createHome'])->name('index');
+Route::get('aboutus', [FrontController::class, 'createAbout'])->name('aboutus');
+Route::get('termcondition', [FrontController::class, 'termCondition'])->name('termcondition');
+Route::get('faq', [FrontController::class, 'createFaq'])->name('faq');
 
 Route::get('register', [RegisterController::class, 'createRegister'])->name('register');
 Route::post('register', [RegisterController::class, 'storeRegister'])->name('store');

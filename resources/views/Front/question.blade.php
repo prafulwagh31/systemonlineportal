@@ -69,7 +69,7 @@
                         @enderror
                     </div>
                   </div>
-                  <button type="submit" class="btn btn-primary " style="margin-top:20px;float:right">Next</button>
+                  <button type="submit" class="btn btn-primary " style="margin-top:20px;float:right;background: #000a15;">Next</button>
                 </form>
                 </div> <!-- End Course Item-->
 

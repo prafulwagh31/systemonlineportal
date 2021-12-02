@@ -16,5 +16,17 @@ class FrontController extends BaseController
     {
       return view('Front.index');
     }
+    public function createAbout()
+    {
+      return view('Front.aboutus');
+    }
+    public function termCondition()
+    {
+      return view('Front.termcondition');
+    }
+    public function createFaq()
+    {
+      return view('Front.faq');
+    }
 
 }

@@ -14,12 +14,12 @@ body {
 }
 
 a {
-  color: #5fcf80;
+  color: #ffff;
   text-decoration: none;
 }
 
 a:hover {
-  color: #86db9f;
+  color: #dd137b;
   text-decoration: none;
 }
 
@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #5fcf80;
+  background: #dd137b;
   width: 40px;
   height: 40px;
   border-radius: 50px;
@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .back-to-top:hover {
-  background: #7ed899;
+  background: #dd137b;
   color: #fff;
 }
 
@@ -79,7 +79,7 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   top: calc(50% - 30px);
   left: calc(50% - 30px);
-  border: 6px solid #5fcf80;
+  border: 6px solid #dd137b;
   border-top-color: #fff;
   border-bottom-color: #fff;
   border-radius: 50%;
@@ -120,7 +120,7 @@ h1, h2, h3, h4, h5, h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  background: #fff;
+  background: #000a15;
   transition: all 0.5s;
   z-index: 997;
   padding: 15px 0;
@@ -143,7 +143,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header .logo img {
-  max-height: 40px;
+  max-height: 70px;
 }
 
 /**
@@ -151,7 +151,7 @@ h1, h2, h3, h4, h5, h6 {
 */
 .get-started-btn {
   margin-left: 22px;
-  background: #5fcf80;
+  background: #dd137b;
   color: #fff;
   border-radius: 50px;
   padding: 8px 25px;
@@ -162,7 +162,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .get-started-btn:hover {
-  background: #3ac162;
+  background: #dd137b;
   color: #fff;
 }
 
@@ -203,7 +203,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Poppins", sans-serif;
   font-size: 15px;
   font-weight: 500;
-  color: #37423b;
+  color: #fff;
   white-space: nowrap;
   transition: 0.3s;
 }
@@ -215,7 +215,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
-  color: #5fcf80;
+  color: #ff3d00;
 }
 
 .navbar .dropdown ul {
@@ -228,7 +228,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 99;
   opacity: 0;
   visibility: hidden;
-  background: #fff;
+  background: #000a15;
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
   transition: 0.3s;
   border-radius: 4px;
@@ -250,7 +250,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
-  color: #5fcf80;
+  color: #ff3d00;
 }
 
 .navbar .dropdown:hover > ul {
@@ -333,7 +333,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 15px;
   padding: 10px 0;
   border-radius: 6px;
-  background-color: #fff;
+  background-color: #000a15;
   overflow-y: auto;
   transition: 0.3s;
 }
@@ -341,11 +341,11 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-mobile a {
   padding: 10px 20px;
   font-size: 15px;
-  color: #37423b;
+  color: #fff;
 }
 
 .navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover > a {
-  color: #5fcf80;
+  color: #ff3d00;
 }
 
 .navbar-mobile .getstarted {
@@ -360,7 +360,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 99;
   opacity: 1;
   visibility: visible;
-  background: #fff;
+  background: #000a15;
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
 }
 
@@ -377,7 +377,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-mobile .dropdown ul a:hover, .navbar-mobile .dropdown ul .active:hover, .navbar-mobile .dropdown ul li:hover > a {
-  color: #5fcf80;
+  color: #ff3d00;
 }
 
 .navbar-mobile .dropdown > .dropdown-active {
@@ -390,7 +390,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 80vh;
-  background: url("../img/hero-bg.jpg") top center;
+  background: url("../img/slider/rishiprasad_4.jpg") top center;
   background-size: cover;
   position: relative;
 }
@@ -445,8 +445,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .btn-get-started:hover {
-  background: #5fcf80;
-  border: 2px solid #5fcf80;
+  background: #dd137b;
+  border: 2px solid #dd137b;
 }
 
 @media (min-width: 1024px) {
@@ -475,6 +475,7 @@ h1, h2, h3, h4, h5, h6 {
 section {
   padding: 60px 0;
   overflow: hidden;
+  margin-top: 60px;
 }
 
 .section-bg {
@@ -519,7 +520,7 @@ section {
 .breadcrumbs {
   margin-top: 73px;
   text-align: center;
-  background: #5fcf80;
+  background: #dd137b;
   padding: 30px 0;
   color: #fff;
 }
@@ -596,7 +597,7 @@ section {
 .counts .counters span {
   font-size: 48px;
   display: block;
-  color: #5fcf80;
+  color: #dd137b;
   font-weight: 700;
 }
 
@@ -1388,12 +1389,12 @@ section {
 #footer {
   color: #37423b;
   font-size: 14px;
-  background: #eef0ef;
+  background: #000;
 }
 
 #footer .footer-top {
   padding: 60px 0 30px 0;
-  background: #f9faf9;
+  background: #000a15;
 }
 
 #footer .footer-top .footer-contact {
@@ -1412,14 +1413,14 @@ section {
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
-  font-family: "Raleway", sans-serif;
-  color: #777777;
+  /*font-family: "Raleway", sans-serif;*/
+  color: #fff;
 }
 
 #footer .footer-top h4 {
   font-size: 16px;
   font-weight: bold;
-  color: #444444;
+  color: #fff;
   position: relative;
   padding-bottom: 12px;
 }
@@ -1436,7 +1437,7 @@ section {
 
 #footer .footer-top .footer-links ul i {
   padding-right: 2px;
-  color: #5fcf80;
+  color: #dd137b;
   font-size: 18px;
   line-height: 1;
 }
@@ -1460,7 +1461,7 @@ section {
 
 #footer .footer-top .footer-links ul a:hover {
   text-decoration: none;
-  color: #5fcf80;
+  color: #dd137b;
 }
 
 #footer .footer-newsletter {
@@ -1470,7 +1471,7 @@ section {
 #footer .footer-newsletter h4 {
   font-size: 16px;
   font-weight: bold;
-  color: #444444;
+  color: #fff;
   position: relative;
   padding-bottom: 12px;
 }
@@ -1500,7 +1501,7 @@ section {
   background: none;
   font-size: 16px;
   padding: 0 20px 2px 20px;
-  background: #5fcf80;
+  background: #dd137b;
   color: #fff;
   transition: 0.3s;
   border-radius: 50px;
@@ -1508,7 +1509,7 @@ section {
 }
 
 #footer .footer-newsletter form input[type="submit"]:hover {
-  background: #3ac162;
+  background: #dd137b;
 }
 
 #footer .credits {
@@ -1528,7 +1529,7 @@ section {
 #footer .social-links a {
   font-size: 18px;
   display: inline-block;
-  background: #5fcf80;
+  background: #dd137b;
   color: #fff;
   line-height: 1;
   padding: 8px 0;
@@ -1541,7 +1542,7 @@ section {
 }
 
 #footer .social-links a:hover {
-  background: #3ac162;
+  background: #dd137b;
   color: #fff;
   text-decoration: none;
 }
