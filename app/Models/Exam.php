@@ -10,5 +10,5 @@ class Exam extends Model
     use HasFactory;
 
     protected $table = 'exam';
-    protected $fillable = ['title', 'category', 'duration','noquestion','passmarks','status','type','cost','fromdate','todate','instruction'];
+    protected $fillable = ['title', 'category','agegroup','language','duration','noquestion','passmarks','status','type','cost','fromdate','todate','instruction'];
 }

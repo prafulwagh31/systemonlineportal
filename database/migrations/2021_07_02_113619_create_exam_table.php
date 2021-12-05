@@ -17,6 +17,8 @@ class CreateExamTable extends Migration
             $table->id('id');
             $table->string('title');
             $table->string('category');
+            $table->string('agegroup');
+            $table->string('language');
             $table->string('duration');
             $table->string('noquestion');
             $table->string('passmarks');

@@ -40,7 +40,7 @@ setInterval(function () {
 
     if (--timer < 0) {
         // timer = duration;
-        window.location.href="{{ route('final')}}";
+        window.location.href="{{ route('userLogout') }}";
     }
   console.log(parseInt(seconds))
   window.localStorage.setItem("seconds",seconds)
@@ -55,7 +55,7 @@ window.onload = function () {
   if(parseInt(min*sec)){
     var fiveMinutes = (parseInt(min*60)+sec);
   }else{
-    var fiveMinutes = 60 * 5;
+    var fiveMinutes = 60 * 1;
   }
     // var fiveMinutes = 60 * 5;
   display = document.querySelector('#time');

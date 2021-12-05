@@ -27,7 +27,7 @@
           </li>
           @endif
 
-          <li><a href="{{ route('register') }}">Signup</a></li>
+          <li><a href="https://www.rpgp.rishiprasad.org/" target="_blank">Signup</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

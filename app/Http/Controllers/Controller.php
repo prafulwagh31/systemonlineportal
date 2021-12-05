@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\Exam;
 use App\Models\Category;
+use App\Models\CorrectAnswer;
 use App\Models\Question;
 use App\Models\Questionwithanswer;
 use Auth;
@@ -32,6 +33,8 @@ class Controller extends BaseController
       $data = $request->validate([
         'title' => 'required',
         'category' => 'required',
+        'agegroup' => 'required',
+        'language' => 'required',
         'duration' => 'required',
         'noquestion' => 'required',
         'passmarks' => 'required',
@@ -55,17 +58,19 @@ class Controller extends BaseController
     {
         $exam = Exam::findOrFail($id);
         $data = $request->validate([
-          'title' => 'required',
-          'category' => 'required',
-          'duration' => 'required',
-          'noquestion' => 'required',
-          'passmarks' => 'required',
-          'status' => 'required',
-          'type' => 'required',
-          'cost' => 'required',
-          'fromdate' => 'required',
-          'todate' => 'required',
-          'instruction' => 'required',
+            'title' => 'required',
+            'category' => 'required',
+            'agegroup' => 'required',
+            'language' => 'required',
+            'duration' => 'required',
+            'noquestion' => 'required',
+            'passmarks' => 'required',
+            'status' => 'required',
+            'type' => 'required',
+            'cost' => 'required',
+            'fromdate' => 'required',
+            'todate' => 'required',
+            'instruction' => 'required',
         ]);
         $exam->update($data);
         return redirect()->route('examlist')->with('message','Exam Update Successfully');
@@ -155,6 +160,29 @@ class Controller extends BaseController
     {
       $questionlist = Question::paginate();
       return view('questionlist',['questionlist' => $questionlist]);
+    }
+
+    public function showQuestion($id)
+    {
+        $question = Question::findOrFail($id);
+        $answer = Questionwithanswer::whereQuestionid($id)->get();
+        $correctAnswer = CorrectAnswer::whereQuestionId($id)->first();
+        return view('showquestion',['question' => $question , 'answer' => $answer ,'correctAnswer' => $correctAnswer]);
+    }
+
+    public function setAnswer(Request $request)
+    {
+        $data = $request->validate([
+            'answer' => 'required',
+        ]);
+
+        CorrectAnswer::updateOrCreate([
+            'question_id' => $request->input('question'),
+        ],[
+            'question_id' => $request->input('question'),
+            'answer_id'  => $request->input('answer'),
+        ]);
+        return redirect()->route('questionlist')->with('message','Answer Set Successfully');
     }
 
     /*************** Front setting controller ********************* */

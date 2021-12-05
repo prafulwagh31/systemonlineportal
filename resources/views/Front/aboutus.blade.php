@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Exam System</title>
+  <title>Rishi Prasad Gyan Pratiyogita - AboutUs</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -27,7 +27,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ url('frontassets/css/style.css') }}" rel="stylesheet">
-  
+
 
   <!-- =======================================================
   * Template Name: Mentor - v4.3.0
@@ -122,7 +122,7 @@
       </div>
     </section><!-- End Counts Section -->
 
-    
+
 
   </main><!-- End #main -->
 

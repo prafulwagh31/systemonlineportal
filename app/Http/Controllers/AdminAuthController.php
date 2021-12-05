@@ -7,7 +7,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use DB;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class AdminAuthController extends Controller
 {
@@ -26,6 +26,7 @@ class AdminAuthController extends Controller
         if(Auth::guard('webadmin')
                ->attempt($req->only(['email', 'password'])))
         {
+
             return redirect()
                 ->route('home');
         }

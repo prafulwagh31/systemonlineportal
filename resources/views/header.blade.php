@@ -13,7 +13,7 @@
                                         <img src="{{ url('assets/images/users/avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
                                     </span>
 
-                                        <span class="account-user-name">{{ Auth::user()->name}}</span>
+                                        <span class="account-user-name">{{ \Illuminate\Support\Facades\Auth::guard('webadmin')->user()->name}}</span>
 
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">

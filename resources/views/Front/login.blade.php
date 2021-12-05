@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Exam System</title>
+  <title>Rishi Prasad Gyan Pratiyogita Exam Portal</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{ url('frontassets/img/favicon.png') }}" rel="icon">
+  <link href="{{ url('frontassets/img/favicon.jpg') }}" rel="icon">
   <link href="{{ url('frontassets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -42,8 +42,8 @@
 }
 
 body {
-  background: #007bff;
-  background: linear-gradient(to right, #0062E6, #33AEFF);
+  background: #194077;
+  background: linear-gradient(to right, #194077, #194077);
 }
 
 .card-signin {
@@ -209,14 +209,13 @@ body {
                 <span style="color:red;">{{ $errors->first('password') }}</span>
               </div>
 
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" style="width: 387px;">Sign in</button>
+           <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" style="width: 100px;background-color:#dd137b;border-color:#dd137b;float:right;">Sign in</button>
               <br><br>
               <div class="custom-control  mb-3" style="margin-left: 14px;">
-              <p> Don't have an account? <a href="{{ route('register') }}">Signup</a></p>
+              <p> Don't have an account? <a href="https://www.rpgp.rishiprasad.org/" target="_blank" style="color:#dd137b">Signup</a></p>
               </div>
               <hr class="my-4">
-              <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit" style="width: 190px;"><i class="bi bi-google"></i> Google</button>
-              <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit" style="width: 190px;"><i class="bi bi-facebook"></i> Facebook</button>
+
             </form>
           </div>
         </div>

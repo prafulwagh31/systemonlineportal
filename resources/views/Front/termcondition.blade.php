@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Exam System</title>
+  <title>Rishi Prasad Gyan Pratiyogita - Terms and Conditions</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -27,7 +27,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ url('frontassets/css/style.css') }}" rel="stylesheet">
-  
+
 
   <!-- =======================================================
   * Template Name: Mentor - v4.3.0
@@ -74,7 +74,7 @@
             3. Each candidate is required to register online at https://www.rpgp.rishiprasad.org/
           </p>
           <p>
-            4. Competition frequency: Quarterly. That is once every 3 months. The competition will be 
+            4. Competition frequency: Quarterly. That is once every 3 months. The competition will be
             conducted online.
           </p>
           <p>
@@ -108,7 +108,7 @@
             14. I will not file any FIR/case/dispute, nor take any action against Sant Shri Asharamji Bapu, His Ashrams, any of His seekers, or any department related to Sant Shri Asharamji Ashram in any police station or court for any reason.
           </p>
           <p>
-            15. The jurisdiction for any dispute shall be in Ahmedabad only and to be decided by the 
+            15. The jurisdiction for any dispute shall be in Ahmedabad only and to be decided by the
             competent court.
           </p>
       </div>
@@ -158,7 +158,7 @@
       </div>
     </section><!-- End Counts Section -->
 
-    
+
 
   </main><!-- End #main -->
 

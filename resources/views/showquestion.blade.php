@@ -3,36 +3,19 @@
 
 <head>
         <meta charset="utf-8" />
-        <title>Question List | Exam Portal</title>
+        <title>Show Question | Exam Portal</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ url('assets/images/favicon.ico') }}">
 
-        <!-- third party css -->
-        <link href="{{ url('assets/css/vendor/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ url('assets/css/vendor/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ url('assets/css/vendor/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ url('assets/css/vendor/select.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-        <!-- third party css end -->
-
         <!-- App css -->
         <link href="{{ url('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ url('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
         <link href="{{ url('assets/css/app-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" />
-        <style>
-            img, svg {
-            vertical-align: middle !important;
-            height: 50px !important;
 
-        }
-        .flex-1
-        {
-            display: none;
-        }
 
-        </style>
 
     </head>
 
@@ -55,7 +38,6 @@
 
                     <!-- Start Content-->
                     <div class="container-fluid">
-
                         <!-- start page title -->
                         <div class="row">
                             <div class="col-12">
@@ -63,71 +45,68 @@
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Question</a></li>
-                                            <li class="breadcrumb-item active">Question List</li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Questions</a></li>
+                                            <li class="breadcrumb-item active">Set Answer </li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Question List</h4>
+                                    <h4 class="page-title">Set Answer</h4>
                                 </div>
                             </div>
                         </div>
                         <!-- end page title -->
 
-                        @if(session()->has('message'))
-                            <div class="alert alert-success">
-                                {{ session()->get('message') }}
-                            </div>
-                        @endif
+
                         <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h2 class="header-title">Question List</h2>
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2 class="header-title">Set Answer</h2>
 
-                                        <div class="tab-content">
-                                            <div class="tab-pane show active" id="buttons-table-preview">
-                                                <table id="" class="table table-striped dt-responsive nowrap w-100">
-                                                    <thead>
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>Question</th>
-                                                            <th>Marks</th>
-                                                            <th>Status</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
+                                            <div class="tab-content">
+                                                <div class="tab-pane show active" id="form-row-preview">
+                                                    <form method="POST" action="{{ route('setAnswer') }}"  enctype="multipart/form-data">
+                                                    {{ csrf_field() }}
+
+                                                        <div class="mb-3">
+                                                            <label for="inputPassword4" class="form-label">Question<span style="color:red"> * </span></label>
+                                                            <textarea class="form-control"  rows="4" name="question" disabled >{{ $question->question }}</textarea>
+                                                            <input type="hidden" name="question" value="{{ $question->getKey() }}">
+                                                            <span style="color:red;">{{ $errors->first('question') }}</span>
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <h4>Set Correct Answers</h4>
+                                                            <hr>
+                                                        </div>
+                                                        <div class="row g-2">
+                                                            <div class="mb-3 col-md-12">
+                                                                <label for="inputPassword" class="form-label">Answer<span style="color:red"> * </span></label>
+                                                                <select name="answer" id="answer" class="form-select">
+                                                                    <option value=""></option>
+                                                                    @foreach ($answer as $key => $answer_val)
+                                                                    <option value="{{ $answer_val->getKey() }}" @if(old('answer',@$correctAnswer->answer_id) == $answer_val->getKey()) selected @endif>{{ $answer_val->answer }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <span style="color:red;">{{ $errors->first('answer') }}</span>
+                                                            </div>
+                                                        </div>
 
 
-                                                    <tbody>
-                                                    @foreach($questionlist as $key => $questionlistval)
-                                                        <tr>
-                                                            <td>{{$questionlist->firstItem()+$key}}</td>
-                                                            <td>{{$questionlistval->question}}</td>
-                                                            <td>{{$questionlistval->marks}}</td>
-                                                            <td>{{$questionlistval->status}}</td>
-                                                            <td class="table-action">
-                                                                <a href="" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                <a href="" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                                <a href="{{ route('showQuestion',$questionlistval->getKey())}}" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                    </tbody>
-                                                </table>
+                                                        <button type="submit" class="btn btn-primary" style="float:right;">Save</button>
+                                                    </form>
+                                                </div> <!-- end preview-->
 
-                                            </div> <!-- end preview-->
-                                            {{ $questionlist->links()}}
 
-                                        </div> <!-- end tab-content-->
+                                            </div> <!-- end tab-content-->
 
-                                    </div> <!-- end card body-->
-                                </div> <!-- end card -->
-                            </div><!-- end col-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card-->
+                                </div> <!-- end col -->
+                            </div>
+
+
                         </div>
-                        <!-- end row-->
-
-
-                    </div> <!-- container -->
+                    <!-- container -->
 
                 </div> <!-- content -->
 
@@ -239,29 +218,26 @@
         <div class="rightbar-overlay"></div>
         <!-- /End-bar -->
 
-
         <!-- bundle -->
         <script src="{{ url('assets/js/vendor.min.js') }}"></script>
         <script src="{{ url('assets/js/app.min.js') }}"></script>
 
         <!-- third party js -->
-        <script src="{{ url('assets/js/vendor/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/dataTables.bootstrap4.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/dataTables.responsive.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/responsive.bootstrap4.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/dataTables.buttons.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/buttons.bootstrap4.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/buttons.html5.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/buttons.flash.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/buttons.print.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/dataTables.keyTable.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/dataTables.select.min.js') }}"></script>
+        <script src="{{ url('assets/js/vendor/Chart.bundle.min.js') }}"></script>
         <!-- third party js ends -->
 
         <!-- demo app -->
-        <script src="{{ url('assets/js/pages/demo.datatable-init.js') }}"></script>
+        <script src="{{ url('assets/js/pages/demo.dashboard-projects.js') }}"></script>
         <!-- end demo js-->
+        <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 
+        <script>
+           CKEDITOR.replace('seodescription');
+           CKEDITOR.replace('answer1');
+           CKEDITOR.replace('answer2');
+           CKEDITOR.replace('answer3');
+           CKEDITOR.replace('answer4');
+        </script>
     </body>
 
 

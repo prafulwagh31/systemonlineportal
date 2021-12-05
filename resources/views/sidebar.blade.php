@@ -1,29 +1,29 @@
 <div class="leftside-menu">
-    
+
                 <!-- LOGO -->
-                <a href="index.html" class="logo text-center logo-light">
+                <a href="{{ route('home') }}" class="logo text-center logo-light">
                     <span class="logo-lg">
-                        <!-- <img src="{{ url('assets/images/logo.png') }}" alt="" height="16"> -->
-                        <h3>Exam Portal</h3>
+                         <img src="{{ url('frontassets/img/rpgplogo.png') }}" alt="" height="50">
+
                     </span>
                     <span class="logo-sm">
-                       <!--  <img src="{{ url('assets/images/logo_sm.png') }}" alt="" height="16"> -->
-                        <h3>Exam Portal</h3>
+                      <img src="{{ url('frontassets/img/rpgplogo.png') }}" alt="" height="20">
+
                     </span>
                 </a>
 
                 <!-- LOGO -->
-                <a href="index.html" class="logo text-center logo-dark">
+                <a href="{{ route('home') }}" class="logo text-center logo-dark">
                     <span class="logo-lg">
-                        <!-- <img src="{{ url('assets/images/logo-dark.png') }}" alt="" height="16"> -->
-                         <h3>Exam Portal</h3>
+                         <img src="{{ url('frontassets/img/rpgplogo.png') }}" alt="" height="50">
+
                     </span>
                     <span class="logo-sm">
-                        <!-- <img src="{{ url('assets/images/logo_sm_dark.png') }}" alt="" height="16"> -->
-                         <h3>Exam Portal</h3>
+                         <img src="{{ url('frontassets/img/rpgplogo.png') }}" alt="" height="20">
+
                     </span>
                 </a>
-    
+
                 <div class="h-100" id="leftside-menu-container" data-simplebar>
 
                     <!--- Sidemenu -->
@@ -60,7 +60,7 @@
                                         <a href="apps-ecommerce-orders-details.html">Exam Completed</a>
                                     </li>
                                     <li>
-                                        <a href="apps-ecommerce-customers.html">Exam Result</a>                                 
+                                        <a href="apps-ecommerce-customers.html">Exam Result</a>
                                     </li>
                                 </ul>
                             </div>
@@ -134,7 +134,7 @@
                         </li>
                     </ul>
 
-                    
+
                     <!-- End Sidebar -->
 
                     <div class="clearfix"></div>

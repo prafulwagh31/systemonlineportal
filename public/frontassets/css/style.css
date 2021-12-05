@@ -139,7 +139,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header .logo a {
-  color: #5fcf80;
+  color: #dd137b;
 }
 
 #header .logo img {
@@ -147,7 +147,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /**
-* Get Startet Button 
+* Get Startet Button
 */
 .get-started-btn {
   margin-left: 22px;
@@ -177,7 +177,7 @@ h1, h2, h3, h4, h5, h6 {
 # Navigation Menu
 --------------------------------------------------------------*/
 /**
-* Desktop Navigation 
+* Desktop Navigation
 */
 .navbar {
   padding: 0;
@@ -282,7 +282,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /**
-* Mobile Navigation 
+* Mobile Navigation
 */
 .mobile-nav-toggle {
   color: #37423b;

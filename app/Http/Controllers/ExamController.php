@@ -17,13 +17,14 @@ class ExamController extends BaseController
 {
     public function show(Request $request,$id)
     {
-
+        // $answerChecked = \App\Models\Result::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->id,'question_id' => 1])->first();
+        // dd($answerChecked->answer_id);
         // Find the question, assuming the model is Question
         Result::updateOrCreate([
-            'user_id' => $request->input('user_id'),
+            'user_id' => Auth::user()->id,
             'question_id' => $request->input('question'),
         ],[
-            'user_id' => $request->input('user_id'),
+            'user_id' => Auth::user()->id,
             'question_id' => $request->input('question'),
             'answer_id'  => $request->input('answer'),
         ]);
@@ -84,5 +85,10 @@ class ExamController extends BaseController
         return view('Front.final');
     }
 
+    public function userLogout()
+    {
+        Auth::logout();
+        return view('Front.final');
+    }
 
 }

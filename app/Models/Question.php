@@ -10,7 +10,7 @@ class Question extends Model
     use HasFactory;
 
     protected $table = 'question';
-    protected $fillable = ['question', 'marks', 'status'];
+    protected $fillable = ['exam','question', 'marks', 'status'];
 
     public function next()
     {

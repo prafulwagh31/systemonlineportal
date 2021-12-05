@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Exam Instructions</title>
-    <link href="{{ url('frontassets/img/favicon.png') }}" rel="icon">
+    <title>Rishi Prasad Gyan Pratiyogita Exam Portal</title>
+    <link href="{{ url('frontassets/img/favicon.jpg') }}" rel="icon">
     <link href="{{ url('frontassets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -27,9 +27,10 @@
 <style type="text/css">
     .tests
     {
-        background-color: #9edfb1;
+        background-color: #dd137b;
         padding: 5px;
         text-align: center;
+        color:#fff;
     }
 </style>
 <body>

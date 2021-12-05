@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <title>Exam System</title>
+        <title>Rishi Prasad Gyan Pratiyogita Exam Portal</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
 
         <!-- Favicons -->
-        <link href="{{ url('frontassets/img/favicon.png') }}" rel="icon">
+        <link href="{{ url('frontassets/img/favicon.jpg') }}" rel="icon">
         <link href="{{ url('frontassets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
         <!-- Google Fonts -->
@@ -77,7 +77,7 @@
                         <!-- End Course Item-->
 
                     </div>
-                    <button type="submit" class="btn btn-primary " style="margin-top:20px;float:right">Next</button>
+                    <button type="submit" class="btn btn-primary " style="margin-top:20px;float:right;background: #dd137b;border-color:#dd137b">Next</button>
                 </form>
 
             </div>

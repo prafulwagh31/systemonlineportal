@@ -48,6 +48,9 @@ Route::get('examlist', [Controller::class, 'examlist'])->name('examlist');
 Route::get('create-question', [Controller::class, 'addquestion'])->name('addquestion');
 Route::post('create-question', [Controller::class, 'createQuestion'])->name('createQuestion');
 Route::get('questionlist', [Controller::class, 'questionlist'])->name('questionlist');
+Route::get('set-answer/{id}', [Controller::class, 'showQuestion'])->name('showQuestion');
+Route::post('set-answer', [Controller::class, 'setAnswer'])->name('setAnswer');
+
 
 
 Route::get('websitesetting', [Controller::class, 'websitesetting'])->name('websitesetting');
@@ -106,5 +109,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('instruction', [ExamController::class, 'instruction'])->name('instruction');
     Route::get('final-answer', [ExamController::class, 'examFinal'])->name('examFinal');
     Route::post('final', [ExamController::class, 'final'])->name('final');
+    Route::get('user-logout', [ExamController::class, 'userLogout'])->name('userLogout');
 
 });

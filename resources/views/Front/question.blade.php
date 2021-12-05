@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <title>Exam System</title>
+        <title>Rishi Prasad Gyan Pratiyogita Exam Portal</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
 
         <!-- Favicons -->
-        <link href="{{ url('frontassets/img/favicon.png') }}" rel="icon">
+        <link href="{{ url('frontassets/img/favicon.jpg') }}" rel="icon">
         <link href="{{ url('frontassets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
         <!-- Google Fonts -->
@@ -40,7 +40,7 @@
             <div class="container" data-aos="fade-up">
 
               <div class="section-title">
-                <h2></h2>
+
                 <p>Question - {{ $question->getKey()}}</p>
               </div>
 
@@ -69,7 +69,7 @@
                         @enderror
                     </div>
                   </div>
-                  <button type="submit" class="btn btn-primary " style="margin-top:20px;float:right;background: #000a15;">Next</button>
+                  <button type="submit" class="btn btn-primary " style="margin-top:20px;float:right;background: #dd137b;border-color:#dd137b">Next</button>
                 </form>
                 </div> <!-- End Course Item-->
 
@@ -84,14 +84,23 @@
                       <h3><a href="course-details.html">Questions</a></h3>
                       <div class="row">
                         @foreach ($question_list as $key =>  $question_list_val)
-                        @php $keydata = $key + 1;@endphp
+                        @php $keydata = $key + 1;
+
+                        @endphp
 
                             @if(request()->route('id') == $keydata)
+
                             <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: blue;padding-top:5px;">{{$keydata}}</h4></div>
 
                             @elseif(request()->route('id') > $keydata)
-                            <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: green;padding-top:5px;">{{$keydata}}</h4></div>
-
+                            @php
+                            $answerChecked = \App\Models\Result::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->id,'question_id' => $keydata])->first();
+                            @endphp
+                                @if(is_null($answerChecked->answer_id))
+                                <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: red;padding-top:5px;">{{$keydata}}</h4></div>
+                                @else
+                                <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: green;padding-top:5px;">{{$keydata}}</h4></div>
+                                @endif
                             @elseif(request()->route('id') < $keydata)
                             <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: #9f9999;padding-top:5px;">{{$keydata}}</h4></div>
 
@@ -120,7 +129,15 @@
                                 <h4 style="background-color: green;"></h4>
                             </div>
                             <div class="col-md-6">
-                                <span><h5>Attempted</h5></span>
+                                <span><h6>Answered</h6></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 ">
+                                <h4 style="background-color: red;"></h4>
+                            </div>
+                            <div class="col-md-6">
+                                <span><h6>Not Answered</h6></span>
                             </div>
                         </div>
                         <div class="row">
@@ -128,7 +145,7 @@
                                 <h4 style="background-color: #9f9999;"></h4>
                             </div>
                             <div class="col-md-6">
-                                <span><h5>Not Attempted</h5></span>
+                                <span><h6>Not Attempted</h6></span>
                             </div>
                         </div>
                         <div class="row">
@@ -136,7 +153,7 @@
                                 <h4 style="background-color: blue"></h4>
                             </div>
                             <div class="col-md-6">
-                                <span><h5>Active</h5></span>
+                                <span><h6>Active</h6></span>
                             </div>
 
                         </div>

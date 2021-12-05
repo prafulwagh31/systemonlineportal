@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
         <meta charset="utf-8" />
         <title>Exam | Exam Portal</title>
@@ -15,7 +15,7 @@
         <link href="{{ url('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
         <link href="{{ url('assets/css/app-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" />
 
-        
+
     </head>
 
     <body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
@@ -51,8 +51,8 @@
                                     <h4 class="page-title">Edit Exam</h4>
                                 </div>
                             </div>
-                        </div>     
-                        <!-- end page title --> 
+                        </div>
+                        <!-- end page title -->
 
                         <div class="row">
                                 <div class="col-12">
@@ -81,7 +81,34 @@
                                                                 <span style="color:red;">{{ $errors->first('category') }}</span>
                                                             </div>
                                                         </div>
-
+                                                        <div class="row g-2">
+                                                            <div class="mb-3 col-md-6">
+                                                                <label for="inputEmail4" class="form-label">Agegroup</label>
+                                                                <select name="agegroup" id="agegroup" class="form-select">
+                                                                    <option value=""> </option>
+                                                                    <option value="Under 12 years" @if(old('agegroup',$editexam->agegroup) == "Under 12 years") selected @endif>Under 12 years</option>
+                                                                    <option value="13 to 17 years" @if(old('agegroup',$editexam->agegroup) == "13 to 17 years") selected @endif>13 to 17 years</option>
+                                                                    <option value="18 to 30 years" @if(old('agegroup',$editexam->agegroup) == "18 to 30 years") selected @endif>18 to 30 years</option>
+                                                                    <option value="Above 30 years" @if(old('agegroup',$editexam->agegroup) == "Above 30 years") selected @endif>Above 30 years</option>
+                                                                </select>
+                                                                <span style="color:red;">{{ $errors->first('agegroup') }}</span>
+                                                            </div>
+                                                            <div class="mb-3 col-md-6">
+                                                                <label for="inputPassword4" class="form-label">Language</label>
+                                                                <select name="language" id="language"  class="form-select">
+                                                                    <option value=""> </option>
+                                                                    <option value="English" @if(old('language',$editexam->language) == "English") selected @endif>English</option>
+                                                                    <option value="Gujarati" @if(old('language',$editexam->language) == "Gujarati") selected @endif>Gujarati</option>
+                                                                    <option value="Marathi" @if(old('language',$editexam->language) == "Marathi") selected @endif>Marathi</option>
+                                                                    <option value="Kannada" @if(old('language',$editexam->language) == "Kannada") selected @endif>Kannada</option>
+                                                                    <option value="Telugu" @if(old('language',$editexam->language) == "Telugu") selected @endif>Telugu</option>
+                                                                    <option value="Oriya" @if(old('language',$editexam->language) == "Oriya") selected @endif>Oriya</option>
+                                                                    <option value="Sindhi" @if(old('language',$editexam->language) == "Sindhi") selected @endif>Sindhi</option>
+                                                                    <option value="Bengali" @if(old('language',$editexam->language) == "Bengali") selected @endif>Bengali</option>
+                                                                </select>
+                                                                <span style="color:red;">{{ $errors->first('language') }}</span>
+                                                            </div>
+                                                        </div>
                                                         <div class="row g-2">
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputEmail4" class="form-label">Duration (In minutes)</label>
@@ -105,20 +132,20 @@
                                                                 <label for="inputPassword4" class="form-label">Status</label>
                                                                 <select class="form-select" id="example-select" name="status">
                                                                     <option value=""> </option>
-                                                                    <option value="Active">Active</option>
-                                                                    <option value="InActive">InActive</option>
+                                                                    <option value="Active" @if(old('status',$editexam->status) == "Active") selected @endif>Active</option>
+                                                                    <option value="InActive" @if(old('status',$editexam->status) == "InActive") selected @endif>InActive</option>
                                                                 </select>
                                                                 <span style="color:red;">{{ $errors->first('status') }}</span>
                                                             </div>
                                                         </div>
-            
+
                                                         <div class="row g-2">
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputEmail4" class="form-label">Type</label>
                                                                 <select class="form-select" id="example-select" name="type">
                                                                     <option value=""> </option>
-                                                                    <option value="Paid">Paid</option>
-                                                                    <option value="Free">Free</option>
+                                                                    <option value="Paid" @if(old('type',$editexam->type) == "Paid") selected @endif>Paid</option>
+                                                                    <option value="Free" @if(old('type',$editexam->type) == "Free") selected @endif>Free</option>
                                                                 </select>
                                                                 <span style="color:red;">{{ $errors->first('type') }}</span>
                                                             </div>
@@ -147,12 +174,12 @@
                                                             <textarea class="form-control" name="instruction" style="height: 150px;">{{ $editexam?->instruction}}</textarea>
                                                             <span style="color:red;">{{ $errors->first('instruction') }}</span>
                                                         </div>
-            
+
                                                         <button type="submit" class="btn btn-primary" style="float:right;">Update</button>
-                                                    </form>                      
+                                                    </form>
                                                 </div> <!-- end preview-->
-                                            
-                                               
+
+
                                             </div> <!-- end tab-content-->
 
                                         </div> <!-- end card-body -->
@@ -160,8 +187,8 @@
                                 </div> <!-- end col -->
                         </div>
 
-                            
-                        </div> 
+
+                        </div>
                     <!-- container -->
 
                 </div> <!-- content -->
@@ -211,7 +238,7 @@
                         <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="dark" id="dark-mode-check">
                         <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
                     </div>
-       
+
 
                     <!-- Width -->
                     <h5 class="mt-4">Width</h5>
@@ -225,7 +252,7 @@
                         <input class="form-check-input" type="checkbox" name="width" value="boxed" id="boxed-check">
                         <label class="form-check-label" for="boxed-check">Boxed</label>
                     </div>
-        
+
 
                     <!-- Left Sidebar-->
                     <h5 class="mt-4">Left Sidebar</h5>
@@ -262,7 +289,7 @@
 
                     <div class="d-grid mt-4">
                         <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
-            
+
                         <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
                             class="btn btn-danger mt-3" target="_blank"><i class="mdi mdi-basket me-1"></i> Purchase Now</a>
                     </div>

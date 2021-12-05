@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Exam System</title>
+  <title>Rishi Prasad Gyan Pratiyogita - Faq</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -27,7 +27,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ url('frontassets/css/style.css') }}" rel="stylesheet">
-  
+
 
   <!-- =======================================================
   * Template Name: Mentor - v4.3.0
@@ -204,7 +204,7 @@
               </h2>
               <div id="collapseTwelve" class="accordion-collapse collapse" aria-labelledby="headingTwelve" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  The first online competition will take place on 2nd Jan 2022 and thereafter on the first Sunday of every three months. That means the next competition dates are 3rd April 2022, 3rd July 2022, 2nd October 2022, and so on. The competition will commence at 8.30 pm (IST). 
+                  The first online competition will take place on 2nd Jan 2022 and thereafter on the first Sunday of every three months. That means the next competition dates are 3rd April 2022, 3rd July 2022, 2nd October 2022, and so on. The competition will commence at 8.30 pm (IST).
                 </div>
               </div>
             </div>
@@ -255,7 +255,7 @@
       </div>
     </section><!-- End Counts Section -->
 
-    
+
 
   </main><!-- End #main -->
 

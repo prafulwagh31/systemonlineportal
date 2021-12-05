@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Exam Instructions</title>
+    <title>Rishi Prasad Gyan Pratiyogita Exam Portal</title>
     <link href="{{ url('frontassets/img/favicon.jpg') }}" rel="icon">
     <link href="{{ url('frontassets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 

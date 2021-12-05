@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
         <meta charset="utf-8" />
         <title>Exam | Exam Portal</title>
@@ -15,7 +15,7 @@
         <link href="{{ url('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
         <link href="{{ url('assets/css/app-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" />
 
-        
+
     </head>
 
     <body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
@@ -51,8 +51,8 @@
                                     <h4 class="page-title">Add Exam</h4>
                                 </div>
                             </div>
-                        </div>     
-                        <!-- end page title --> 
+                        </div>
+                        <!-- end page title -->
 
                         <div class="row">
                                 <div class="col-12">
@@ -81,7 +81,34 @@
                                                                 <span style="color:red;">{{ $errors->first('category') }}</span>
                                                             </div>
                                                         </div>
-
+                                                        <div class="row g-2">
+                                                            <div class="mb-3 col-md-6">
+                                                                <label for="inputEmail4" class="form-label">Agegroup</label>
+                                                                <select name="agegroup" id="agegroup" class="form-select">
+                                                                    <option value=""> </option>
+                                                                    <option value="Under 12 years">Under 12 years</option>
+                                                                    <option value="13 to 17 years">13 to 17 years</option>
+                                                                    <option value="18 to 30 years">18 to 30 years</option>
+                                                                    <option value="Above 30 years">Above 30 years</option>
+                                                                </select>
+                                                                <span style="color:red;">{{ $errors->first('agegroup') }}</span>
+                                                            </div>
+                                                            <div class="mb-3 col-md-6">
+                                                                <label for="inputPassword4" class="form-label">Language</label>
+                                                                <select name="language" id="language"  class="form-select">
+                                                                    <option value=""> </option>
+                                                                    <option value="English">English</option>
+                                                                    <option value="Gujarati">Gujarati</option>
+                                                                    <option value="Marathi">Marathi</option>
+                                                                    <option value="Kannada">Kannada</option>
+                                                                    <option value="Telugu">Telugu</option>
+                                                                    <option value="Oriya">Oriya</option>
+                                                                    <option value="Sindhi">Sindhi</option>
+                                                                    <option value="Bengali">Bengali</option>
+                                                                </select>
+                                                                <span style="color:red;">{{ $errors->first('language') }}</span>
+                                                            </div>
+                                                        </div>
                                                         <div class="row g-2">
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputEmail4" class="form-label">Duration (In minutes)</label>
@@ -111,7 +138,7 @@
                                                                 <span style="color:red;">{{ $errors->first('status') }}</span>
                                                             </div>
                                                         </div>
-            
+
                                                         <div class="row g-2">
                                                             <div class="mb-3 col-md-6">
                                                                 <label for="inputEmail4" class="form-label">Type</label>
@@ -147,12 +174,12 @@
                                                             <textarea class="form-control" name="instruction" style="height: 150px;"></textarea>
                                                             <span style="color:red;">{{ $errors->first('instruction') }}</span>
                                                         </div>
-            
+
                                                         <button type="submit" class="btn btn-primary" style="float:right;">Save</button>
-                                                    </form>                      
+                                                    </form>
                                                 </div> <!-- end preview-->
-                                            
-                                               
+
+
                                             </div> <!-- end tab-content-->
 
                                         </div> <!-- end card-body -->
@@ -160,8 +187,8 @@
                                 </div> <!-- end col -->
                         </div>
 
-                            
-                        </div> 
+
+                        </div>
                     <!-- container -->
 
                 </div> <!-- content -->
@@ -211,7 +238,7 @@
                         <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="dark" id="dark-mode-check">
                         <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
                     </div>
-       
+
 
                     <!-- Width -->
                     <h5 class="mt-4">Width</h5>
@@ -225,7 +252,7 @@
                         <input class="form-check-input" type="checkbox" name="width" value="boxed" id="boxed-check">
                         <label class="form-check-label" for="boxed-check">Boxed</label>
                     </div>
-        
+
 
                     <!-- Left Sidebar-->
                     <h5 class="mt-4">Left Sidebar</h5>
@@ -262,7 +289,7 @@
 
                     <div class="d-grid mt-4">
                         <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
-            
+
                         <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
                             class="btn btn-danger mt-3" target="_blank"><i class="mdi mdi-basket me-1"></i> Purchase Now</a>
                     </div>
