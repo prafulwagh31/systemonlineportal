@@ -63,6 +63,16 @@ class ExamController extends BaseController
         ]);
     }
 
+    public function user()
+    {
+        return view('Front.user');
+    }
+
+    public function profile()
+    {
+        return view('Front.profile');
+    }
+
     public function instruction()
     {
         return view('Front.instruction');

@@ -65,7 +65,7 @@
                      </p>
                   </div>
                </div>
-               <button class="btn btn-primary"><a href="{{route('instruction')}}">Next</a></button>
+               <button class="btn btn-primary"><a href="{{ route('user') }}">Next</a></button>
             </div>
          </section>
          <!-- End About Section -->

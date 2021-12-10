@@ -106,6 +106,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('profile', [Controller::class, 'profile'])->name('profile');
     Route::get('exam/{id}', [ExamController::class, 'exam'])->name('exam');
     Route::post('question/{id}', [ExamController::class, 'show'])->name('question');
+    Route::get('user', [ExamController::class, 'user'])->name('user');
+    Route::get('profile', [ExamController::class, 'profile'])->name('profile');
     Route::get('instruction', [ExamController::class, 'instruction'])->name('instruction');
     Route::get('final-answer', [ExamController::class, 'examFinal'])->name('examFinal');
     Route::post('final', [ExamController::class, 'final'])->name('final');
