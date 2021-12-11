@@ -66,7 +66,10 @@
             </div>
          </div>
          <div class="next" style="text-align: center;">
-            <a href="{{route('exam', ['id' => 1])}}" class="get-started-btn">Next</a>
+            @php
+                $question = \App\Models\Question::whereExam(2)->first();
+            @endphp
+            <a href="{{route('exam', ['id' => $question->id])}}" class="get-started-btn">Next</a>
          </div>
       </div>
    </div>

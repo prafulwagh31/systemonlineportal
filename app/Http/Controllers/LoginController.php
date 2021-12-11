@@ -28,7 +28,7 @@ class LoginController extends BaseController
 
         if (Auth::attempt($credentials)) {
             if (Auth::user()->id) {
-                return redirect()->intended('/instruction');
+                return redirect()->intended('/user');
             }else
             {
                 return redirect()->route('index');

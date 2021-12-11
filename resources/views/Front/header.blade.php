@@ -15,7 +15,7 @@
           @if(\Illuminate\Support\Facades\Auth::user())
           <li class="dropdown"><a href="#"><span><i class="fa fa-user"></i>{{ Auth::user()->name}}</span></a>
             <ul>
-              <li><a href="{{ route('admin.logout') }}">logout</a></li>
+              <li><a href="{{ route('user.logout') }}">logout</a></li>
             </ul>
           </li>
           @else

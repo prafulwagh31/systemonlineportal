@@ -55,7 +55,7 @@ window.onload = function () {
   if(parseInt(min*sec)){
     var fiveMinutes = (parseInt(min*60)+sec);
   }else{
-    var fiveMinutes = 60 * 1;
+    var fiveMinutes = 60 * 30;
   }
     // var fiveMinutes = 60 * 5;
   display = document.querySelector('#time');

@@ -17,9 +17,10 @@ class ExamController extends BaseController
 {
     public function show(Request $request,$id)
     {
-        // $answerChecked = \App\Models\Result::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->id,'question_id' => 1])->first();
-        // dd($answerChecked->answer_id);
+        // $answerChecked = \App\Models\Result::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->id,'question_id' => 9])->first();
+        // dd($answerChecked);
         // Find the question, assuming the model is Question
+
         Result::updateOrCreate([
             'user_id' => Auth::user()->id,
             'question_id' => $request->input('question'),
@@ -29,7 +30,7 @@ class ExamController extends BaseController
             'answer_id'  => $request->input('answer'),
         ]);
 
-        $question = Question::find($id);
+        $question = Question::whereExam(2)->find($id);
 
 
         if(is_null($question))
@@ -40,7 +41,7 @@ class ExamController extends BaseController
 
 
             $answer = $question->answers()->get();
-            $question_list = Question::get();
+            $question_list = Question::whereExam(2)->get();
             return view('Front.question', [
                 'question' => $question ,
                 'answer'   =>  $answer,
@@ -52,9 +53,9 @@ class ExamController extends BaseController
     public  function exam(Request $request,$id)
     {
 
-        $question = Question::find($id);
+        $question = Question::whereExam(2)->first();
         $answer = $question->answers()->get();
-        $question_list = Question::get();
+        $question_list = Question::whereExam(2)->get();
 
         return view('Front.question', [
             'question' => $question ,

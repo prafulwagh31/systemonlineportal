@@ -88,20 +88,24 @@
 
                         @endphp
 
-                            @if(request()->route('id') == $keydata)
+                            @if(request()->route('id') == $question_list_val->id)
 
                             <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: blue;padding-top:5px;">{{$keydata}}</h4></div>
 
-                            @elseif(request()->route('id') > $keydata)
+                            @elseif(request()->route('id') > $question_list_val->id)
                             @php
                             $answerChecked = \App\Models\Result::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->id,'question_id' => $keydata])->first();
                             @endphp
-                                @if(is_null($answerChecked->answer_id))
-                                <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: red;padding-top:5px;">{{$keydata}}</h4></div>
+                                @isset($answerChecked)
+                                    @if(is_null($answerChecked->answer_id))
+                                    <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: red;padding-top:5px;">{{$keydata}}</h4></div>
+                                    @else
+                                    <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: green;padding-top:5px;">{{$keydata}}</h4></div>
+                                    @endif
                                 @else
                                 <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: green;padding-top:5px;">{{$keydata}}</h4></div>
-                                @endif
-                            @elseif(request()->route('id') < $keydata)
+                                @endisset
+                            @elseif(request()->route('id') < $question_list_val->id)
                             <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: #9f9999;padding-top:5px;">{{$keydata}}</h4></div>
 
                             @endif
