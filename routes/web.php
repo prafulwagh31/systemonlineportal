@@ -56,8 +56,8 @@ Route::post('set-answer', [Controller::class, 'setAnswer'])->name('setAnswer');
 Route::get('websitesetting', [Controller::class, 'websitesetting'])->name('websitesetting');
 Route::get('pagesetting', [Controller::class, 'pagesetting'])->name('pagesetting');
 Route::get('socialsetting', [Controller::class, 'socialsetting'])->name('socialsetting');
-
-
+Route::get('user-list', [Controller::class, 'userList'])->name('userList');
+Route::post('/search', [Controller::class, 'searchUser']);
 
 
 
@@ -75,7 +75,7 @@ Route::post('register', [RegisterController::class, 'storeRegister'])->name('sto
 // Route::get('login', [LoginController::class, 'createLogin'])->name('login');
 // Route::post('login', [LoginController::class, 'createauthenticate'])->name('login');
 Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
-
+Route::get('updateNumber', [ExamController::class, 'updateNumber'])->name('updateNumber');
 
 Route::get('/login', [LoginController::class, 'login'])
     ->name('user.login');
@@ -112,5 +112,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('final-answer', [ExamController::class, 'examFinal'])->name('examFinal');
     Route::post('final', [ExamController::class, 'final'])->name('final');
     Route::get('user-logout', [ExamController::class, 'userLogout'])->name('userLogout');
+
 
 });

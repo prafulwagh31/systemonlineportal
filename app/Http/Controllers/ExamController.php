@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 use App\Models\Result;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -100,6 +101,24 @@ class ExamController extends BaseController
     {
         Auth::logout();
         return view('Front.final');
+    }
+
+    public function updateNumber()
+    {
+        $userOnline = User::get();
+        foreach($userOnline as $key =>  $user)
+        {
+            if($key > 0)
+            {
+                $firstUser =  User::where('hallticket', '!=' ,'')->orderBy('id','desc')->first();
+
+                $number = $firstUser->hallticket + 1;
+                $update = User::whereId($user->id)->update(['hallticket' => $number]);
+            }
+
+
+        }
+
     }
 
 }

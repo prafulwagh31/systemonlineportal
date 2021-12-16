@@ -14,6 +14,7 @@ use App\Models\CorrectAnswer;
 use App\Models\Question;
 use App\Models\Questionwithanswer;
 use Auth;
+use App\Models\User;
 
 class Controller extends BaseController
 {
@@ -134,6 +135,30 @@ class Controller extends BaseController
       return view('categorylist',['categorylist' => $categorylist]);
     }
 
+    public function userList()
+    {
+       $users = DB::table('users_online')
+            ->leftjoin('district', 'district.DistCode', '=', 'users_online.district')
+            ->leftjoin('state', 'state.StCode', '=', 'users_online.state')
+            ->leftjoin('countries', 'countries.country_code', '=', 'users_online.country')
+            ->select('users_online.*', 'district.*', 'state.*', 'countries.*')
+            ->paginate();
+         return view('userlist',['users' => $users]);
+    }
+
+    public function searchUser(Request $request)
+    {
+        $search = $request->get('search');
+         if($search != ''){
+         $users = User::where('name','like', '%' .$search. '%')->paginate();
+         $users->appends(array('search'=> $request->get('search'),));
+         if(count($users )>0){
+            return view('userlist',['users'=>$users]);
+         }
+         return back()->with('error','No results Found');
+
+        }
+    }
     /*************** Exam Question ********************* */
     public function addquestion()
     {

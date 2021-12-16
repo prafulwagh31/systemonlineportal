@@ -23,7 +23,8 @@ class User extends Authenticatable
         'mobile',
         'password',
         'email_verified_at',
-        'remember_token'
+        'remember_token',
+        'hallticket'
     ];
 
     /**
