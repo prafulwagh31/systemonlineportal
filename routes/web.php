@@ -25,7 +25,7 @@ Route::get('home', [Controller::class, 'home','middleware' => 'auth'])->name('ho
 Route::get('registerdata', [AuthController::class, 'createRegister'])->name('registerdata');
 Route::post('registerdata', [AuthController::class, 'storeRegister'])->name('storeregister');
 
-
+Route::get('export', [Controller::class, 'export'])->name('export');
 
 
 

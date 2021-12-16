@@ -12,6 +12,8 @@ use App\Models\Exam;
 use App\Models\Category;
 use App\Models\CorrectAnswer;
 use App\Models\Question;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Questionwithanswer;
 use Auth;
 use App\Models\User;
@@ -22,7 +24,14 @@ class Controller extends BaseController
     {
       return view('home');
     }
-
+    public function importExportView()
+    {
+       return view('import');
+    }
+    public function export() 
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
+    }
     /*************** Exam Controller ********************* */
     public function addexam()
     {

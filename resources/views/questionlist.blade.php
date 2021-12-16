@@ -83,7 +83,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h2 class="header-title">Question List</h2>
-
+                                        <button class="btn btn-primary"><a href="{{ route('export') }}" style="color:white;">Export</a></button>
                                         <div class="tab-content">
                                             <div class="tab-pane show active" id="buttons-table-preview">
                                                 <table id="" class="table table-striped dt-responsive nowrap w-100">
