@@ -58,6 +58,19 @@
         <h2>About Us</h2>
         <hr class="hr-5">
         <p>Useful information for the participants of the RPGP competition</p>
+        <div class="col-md-2" style="margin-left: 79%;">
+           <select name="language" id="language"  class="form-select">
+              <option value="">Select</option>
+              <option value="English">English</option>
+              <option value="Gujarati">Gujarati</option>
+              <option value="Marathi">Marathi</option>
+              <option value="Kannada">Kannada</option>
+              <option value="Telugu">Telugu</option>
+              <option value="Oriya">Oriya</option>
+              <option value="Sindhi">Sindhi</option>
+              <option value="Bengali">Bengali</option>
+           </select>
+        </div>
       </div>
     </div><!-- End Breadcrumbs -->
 

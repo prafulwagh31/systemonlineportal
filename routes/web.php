@@ -8,6 +8,9 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\AboutusController;
+use App\Http\Controllers\TermsconditionController;
+use App\Http\Controllers\FAQController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +59,28 @@ Route::post('set-answer', [Controller::class, 'setAnswer'])->name('setAnswer');
 Route::get('websitesetting', [Controller::class, 'websitesetting'])->name('websitesetting');
 Route::get('pagesetting', [Controller::class, 'pagesetting'])->name('pagesetting');
 Route::get('socialsetting', [Controller::class, 'socialsetting'])->name('socialsetting');
+
+Route::get('aboutsus', [AboutusController::class, 'aboutsUs'])->name('aboutsus');
+Route::get('aboutlist', [AboutusController::class, 'aboutList'])->name('aboutlist');
+Route::post('addaboutus', [AboutusController::class, 'addAboutus'])->name('addaboutus');
+Route::get('editaboutsus/{id}', [AboutusController::class, 'editAboutus'])->name('editaboutsus');
+Route::post('updateaboutus/{id}', [AboutusController::class, 'updateAboutus'])->name('updateaboutus');
+Route::get('destroyaboutus/{id}', [AboutusController::class, 'destroyAboutus'])->name('destroyaboutus');
+
+Route::get('termscondition', [TermsconditionController::class, 'termsCondition'])->name('termscondition');
+Route::get('termconditionlist', [TermsconditionController::class, 'termconditionList'])->name('termconditionlist');
+Route::post('addtermscondition', [TermsconditionController::class, 'addtermsCondition'])->name('addtermscondition');
+Route::get('edittermscondition/{id}', [TermsconditionController::class, 'edittermsCondition'])->name('edittermscondition');
+Route::post('updatetermscondition/{id}', [TermsconditionController::class, 'updatetermsCondition'])->name('updatetermscondition');
+Route::get('destroytermscondition/{id}', [TermsconditionController::class, 'destroytermsCondition'])->name('destroytermscondition');
+
+Route::get('faqs', [FAQController::class, 'faqCreate'])->name('faqs');
+Route::get('faqlist', [FAQController::class, 'faqList'])->name('faqlist');
+Route::post('addfaqs', [FAQController::class, 'addFaqs'])->name('addfaqs');
+Route::get('editfaq/{id}', [FAQController::class, 'editFaq'])->name('editfaq');
+Route::post('updatefaq/{id}', [FAQController::class, 'updateFaq'])->name('updatefaq');
+Route::get('destroyfaq/{id}', [FAQController::class, 'destroyFaq'])->name('destroyfaq');
+
 Route::get('user-list', [Controller::class, 'userList'])->name('userList');
 Route::post('/search', [Controller::class, 'searchUser']);
 
