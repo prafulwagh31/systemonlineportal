@@ -33,9 +33,9 @@
             <h4>Useful Links</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="{{ route('faq') }}">FAQ</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('admin.login') }}">Admin Login</a></li>
+              <!-- <li><i class="bx bx-chevron-right"></i> <a href="{{ route('admin.login') }}">Admin Login</a></li> -->
               <li><i class="bx bx-chevron-right"></i> <a href="{{ route('user.login') }}">User Login</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('register') }}">Sign Up</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://www.rpgp.rishiprasad.org/">Registration</a></li>
             </ul>
           </div>
 

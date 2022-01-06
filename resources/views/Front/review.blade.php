@@ -53,12 +53,14 @@
                         <div class="course-item">
 
                             <div class="course-content">
-                            <h3><a href="#">{{ strip_tags($result->question) }}</a></h3>
+                            <h3 ><a  @if(!is_null($result->answer_id)) style="color:green" @else style="color:red" href="{{ route('questionNotAttempted',$result->question_id) }}" @endif>{{ strip_tags($result->question) }}</a></h3>
+                            @if(!is_null($result->answer_id))
                             <div class="trainer-profile ">
 
-                                <div class="col-lg-12"><p ><input type="checkbox" disabled name="answer" id="answer" value="{{ $result->answer_id}}" checked> &nbsp;&nbsp;&nbsp;&nbsp;{{ strip_tags($result->answer) }}</p></div>
+                                <div class="col-lg-12"><p ><input type="checkbox" disabled name="answer" id="answer" value="{{ $result->answer_id }}" checked> &nbsp;&nbsp;&nbsp;&nbsp;{{ strip_tags($result->answer) }}</p></div>
 
                             </div>
+                            @else @endif
                             <input type="hidden" name="user_id" value="1">
 
                             <div class="trainer d-flex justify-content-between align-items-center">
@@ -77,7 +79,7 @@
                         <!-- End Course Item-->
 
                     </div>
-                    <button type="submit" class="btn btn-primary " style="margin-top:20px;float:right;background: #dd137b;border-color:#dd137b">Next</button>
+                    <button type="submit" class="btn btn-primary " style="margin-top:20px;float:right;background: #dd137b;border-color:#dd137b;">Submit Exam</button>
                 </form>
 
             </div>

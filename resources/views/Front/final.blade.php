@@ -43,7 +43,7 @@
                <div>
                   <div class="tests">
                     <h1>
-                        Thank You for exam !!!
+                        Thank you for participating in this Pratiyogita !!!
                     </h1>
                   </div>
 

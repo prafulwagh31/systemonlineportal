@@ -13,24 +13,22 @@
           <li><a href="{{ route('termcondition') }}">Terms & Condition</a></li>
           <li><a href="{{ route('faq') }}">FAQ</a></li>
           @if(\Illuminate\Support\Facades\Auth::user())
-          <li class="dropdown"><a href="#"><span><i class="fa fa-user"></i>{{ Auth::user()->name}}</span></a>
+          <li class="dropdown"><a href="#"><span><i class="fa fa-user"></i> &nbsp;&nbsp;{{ Auth::user()->name}}</span> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
             <ul>
-              <li><a href="{{ route('user.logout') }}">logout</a></li>
+              <li><a href="{{ route('user') }}"> Profile</a></li>
+              <li><a href="{{ route('user.logout') }}"> logout</a></li>
             </ul>
           </li>
           @else
-          <li class="dropdown"><a href="#"><span>Login</span><i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="{{ route('admin.login') }}">Admin Login</a></li>
-              <li><a href="{{ route('user.login') }}">User Login</a></li>
-            </ul>
-          </li>
+          <li><a href="{{ route('user.login') }}"><span>Login</span></a></li>
+          
           @endif
 
-          <li><a href="https://www.rpgp.rishiprasad.org/" target="_blank">Signup</a></li>
+          <li><a href="https://www.rpgp.rishiprasad.org/" target="_blank">Registration</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
     </div>
 </header>
+

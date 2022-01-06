@@ -13,10 +13,13 @@ use App\Models\Category;
 use App\Models\CorrectAnswer;
 use App\Models\Question;
 use App\Exports\UsersExport;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Questionwithanswer;
+use App\Models\QuestionAttemptedUsers;
+use App\Models\UserExamAttempted;
+use App\Models\Result;
 use Auth;
 use App\Models\User;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Controller extends BaseController
 {
@@ -28,7 +31,7 @@ class Controller extends BaseController
     {
        return view('import');
     }
-    public function export() 
+    public function export()
     {
         return Excel::download(new UsersExport, 'users.xlsx');
     }
@@ -48,6 +51,7 @@ class Controller extends BaseController
         'duration' => 'required',
         'noquestion' => 'required',
         'passmarks' => 'required',
+        'totalmarks' => 'required',
         'status' => 'required',
         'type' => 'required',
         'cost' => 'required',
@@ -62,7 +66,7 @@ class Controller extends BaseController
     {
         $editexam = Exam::findOrFail($id);
         $examcategorydata = Category::all();
-        return view('editExam',['editexam' => $editexam,'examcategorydata' => $examcategorydata]);
+        return view('editexam',['editexam' => $editexam,'examcategorydata' => $examcategorydata]);
     }
     public function updateExam(Request $request,$id)
     {
@@ -75,6 +79,7 @@ class Controller extends BaseController
             'duration' => 'required',
             'noquestion' => 'required',
             'passmarks' => 'required',
+            'totalmarks' => 'required',
             'status' => 'required',
             'type' => 'required',
             'cost' => 'required',
@@ -117,7 +122,7 @@ class Controller extends BaseController
     public function editCategory($id)
     {
         $editcategory = Category::findOrFail($id);
-        return view('editCategory',['editcategory' => $editcategory]);
+        return view('editcategory',['editcategory' => $editcategory]);
     }
     public function updateCategory(Request $request,$id)
     {
@@ -176,19 +181,31 @@ class Controller extends BaseController
     }
     public function createQuestion(Request $request)
     {
-      $data = $request->validate([
-        'exam' => 'required',
-        'question' => 'required',
-        'marks' => 'required',
-        'status' => 'required',
-      ]);
-      $question = Question::create($data);
-      foreach($request->input('answer') as $answer)
-      {
-        $info = ['questionid' => $question->id,'answer' => $answer];
-        Questionwithanswer::create($info);
-      }
-      return redirect()->route('questionlist')->with('message','Question Added Successfully');
+
+        $examQuestion = Question::whereExam($request->input('exam'))->latest('serial')->first(); 
+        
+        if(is_null($examQuestion))
+        {
+            $serial = 1;
+        }else
+        {
+            $serial = $examQuestion->serial + 1;
+        }
+
+            $data = $request->validate([
+            'exam' => 'required',
+            'question' => 'required',
+            'marks' => 'required',
+            'status' => 'required',
+          ]);
+            $data['serial'] = $serial;
+          $question = Question::create($data);
+          foreach($request->input('answer') as $answer)
+          {
+            $info = ['questionid' => $question->id,'answer' => $answer];
+            Questionwithanswer::create($info);
+          }
+          return redirect()->route('questionlist')->with('message','Question Added Successfully');
     }
     public function questionlist()
     {
@@ -196,6 +213,15 @@ class Controller extends BaseController
       return view('questionlist',['questionlist' => $questionlist]);
     }
 
+    public function destroyQuestion($id)
+    {
+        Question::findOrFail($id)->delete();
+
+        return redirect()->route('questionlist')
+        ->with([
+            'message' => 'Question Deleted successfully.',
+        ]);
+    }
     public function showQuestion($id)
     {
         $question = Question::findOrFail($id);
@@ -219,6 +245,22 @@ class Controller extends BaseController
         return redirect()->route('questionlist')->with('message','Answer Set Successfully');
     }
 
+    public function testingUserExam(Request $request)
+    {
+        $user_id = $request->testing_user;
+
+        QuestionAttemptedUsers::whereUserId($user_id)->delete();
+        UserExamAttempted::whereUserId($user_id)->delete();
+        Result::whereUserId($user_id)->delete();
+
+        return redirect()->route('testingSetting')->with('message','User Exam Set Successfully');
+    }
+
+    public function testingUserExamView()
+    {
+        return view('testing-setting');
+    }
+
     /*************** Front setting controller ********************* */
     public function websitesetting()
     {
@@ -234,6 +276,7 @@ class Controller extends BaseController
     }
     public function profile()
     {
-      return view('profile');
+        
+        return view('profile');
     }
 }

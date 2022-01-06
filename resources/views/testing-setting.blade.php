@@ -3,36 +3,19 @@
 
 <head>
         <meta charset="utf-8" />
-        <title>Exam List | Exam Portal</title>
+        <title>Testing Setting | Exam Portal</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ url('assets/images/favicon.ico') }}">
 
-        <!-- third party css -->
-        <link href="{{ url('assets/css/vendor/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ url('assets/css/vendor/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ url('assets/css/vendor/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ url('assets/css/vendor/select.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-        <!-- third party css end -->
-
         <!-- App css -->
         <link href="{{ url('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ url('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
         <link href="{{ url('assets/css/app-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" />
-        <style>
-            img, svg {
-            vertical-align: middle !important;
-            height: 50px !important;
 
-        }
-        .flex-1
-        {
-            display: none;
-        }
 
-        </style>
 
     </head>
 
@@ -55,7 +38,6 @@
 
                     <!-- Start Content-->
                     <div class="container-fluid">
-                        
                         <!-- start page title -->
                         <div class="row">
                             <div class="col-12">
@@ -63,78 +45,65 @@
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Exams</a></li>
-                                            <li class="breadcrumb-item active">Exam List</li>
+                                           
+                                            <li class="breadcrumb-item active">Testing Setting</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Exam List</h4>
+                                    <h4 class="page-title">Testing Setting</h4>
                                 </div>
                             </div>
-                        </div>     
-                        <!-- end page title --> 
-
-                        @if(session()->has('message'))
-                            <div class="alert alert-success">
-                                {{ session()->get('message') }}
-                            </div>
-                        @endif
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h2 class="header-title">Exam List</h2>
-                                        
-                                        <div class="tab-content">
-                                            <div class="tab-pane show active" id="buttons-table-preview">
-                                                <table id="" class="table table-striped dt-responsive nowrap w-100">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Sr no:</th>
-                                                            <th>Exam Id</th>
-                                                            <th>Name</th>
-                                                            <th>Description</th>
-                                                            <th>Total Marks</th>
-                                                            <th>Available From</th>
-                                                            <th>Available To</th>
-                                                            <th>Status</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                
-                                                
-                                                    <tbody>
-                                                    @foreach($listexam as $key => $listexamval)
-                                                        <tr>
-                                                            <td>{{$listexam->firstItem()+$key}}</td>
-                                                            <td>{{$listexamval->id}}</td>
-                                                            <td>{{$listexamval->title}}</td>
-                                                            <td>{{$listexamval->instruction}}</td>
-                                                            <td>{{$listexamval->totalmarks}}</td>
-                                                            <td>{{$listexamval->fromdate}}</td>
-                                                            <td>{{$listexamval->todate}}</td>
-                                                            <td>{{$listexamval->status}}</td>
-                                                            <td class="table-action">
-                                                                <a href="{{route('editExam',$listexamval->id)}}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                <a href="{{route('destroyExam',$listexamval->id)}}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                            </td>
-                                                            
-                                                        </tr>
-                                                    @endforeach      
-                                                    </tbody>
-                                                </table>                                         
-                                            </div> <!-- end preview-->
-                                        		{{ $listexam->links()}}
-                                            
-                                        </div> <!-- end tab-content-->
-                                        
-                                    </div> <!-- end card body-->
-                                </div> <!-- end card -->
-                            </div><!-- end col-->
                         </div>
-                        <!-- end row-->
+                        <!-- end page title -->
 
-                        
-                    </div> <!-- container -->
+
+                        <div class="row">
+                                @if(session()->has('message'))
+                                    <div class="alert alert-success">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @endif
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2 class="header-title">Testing Setting</h2>
+
+                                            <div class="tab-content">
+                                                <div class="tab-pane show active" id="form-row-preview">
+                                                    <form action="{{ route('testingSetting') }}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        <div class="row g-2">
+                                                            <div class="mb-3 col-md-6">
+                                                                <label for="inputEmail4" class="form-label">Start Users Exam<span style="color:red;"> * </span></label>
+                                                                <select class="form-control" name="testing_user">
+                                                                    <option value="1295"> 8625819469(Lalita Wagh)</option>
+                                                                    <option value="5"> 8625819461(Mayank Sahu)</option>
+                                                                    <option value="3700"> 9423290079(Praful Wagh)</option>
+                                                                    <option value="4"> 8625819461(Lalita Wagh)</option>
+                                                                </select>
+                                                            </div>
+                                                            
+                                                        </div>
+
+                                                        
+                                                       
+            
+                                                        
+            
+                                                        <button type="submit" class="btn btn-primary" style="float:right;">Save</button>
+                                                    </form>                      
+                                                </div> <!-- end preview-->
+                                            
+                                               
+                                            </div> <!-- end tab-content-->
+
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card-->
+                                </div> <!-- end col -->
+                            </div>
+
+                            
+                        </div> 
+                    <!-- container -->
 
                 </div> <!-- content -->
 
@@ -183,7 +152,7 @@
                         <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="dark" id="dark-mode-check">
                         <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
                     </div>
-       
+
 
                     <!-- Width -->
                     <h5 class="mt-4">Width</h5>
@@ -197,7 +166,7 @@
                         <input class="form-check-input" type="checkbox" name="width" value="boxed" id="boxed-check">
                         <label class="form-check-label" for="boxed-check">Boxed</label>
                     </div>
-        
+
 
                     <!-- Left Sidebar-->
                     <h5 class="mt-4">Left Sidebar</h5>
@@ -234,7 +203,7 @@
 
                     <div class="d-grid mt-4">
                         <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
-            
+
                         <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
                             class="btn btn-danger mt-3" target="_blank"><i class="mdi mdi-basket me-1"></i> Purchase Now</a>
                     </div>
@@ -246,29 +215,26 @@
         <div class="rightbar-overlay"></div>
         <!-- /End-bar -->
 
-
         <!-- bundle -->
         <script src="{{ url('assets/js/vendor.min.js') }}"></script>
         <script src="{{ url('assets/js/app.min.js') }}"></script>
 
         <!-- third party js -->
-        <script src="{{ url('assets/js/vendor/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/dataTables.bootstrap4.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/dataTables.responsive.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/responsive.bootstrap4.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/dataTables.buttons.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/buttons.bootstrap4.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/buttons.html5.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/buttons.flash.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/buttons.print.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/dataTables.keyTable.min.js') }}"></script>
-        <script src="{{ url('assets/js/vendor/dataTables.select.min.js') }}"></script>
+        <script src="{{ url('assets/js/vendor/Chart.bundle.min.js') }}"></script>
         <!-- third party js ends -->
 
         <!-- demo app -->
-        <script src="{{ url('assets/js/pages/demo.datatable-init.js') }}"></script>
+        <script src="{{ url('assets/js/pages/demo.dashboard-projects.js') }}"></script>
         <!-- end demo js-->
+        <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 
+        <script>
+           CKEDITOR.replace('seodescription');
+           CKEDITOR.replace('answer1');
+           CKEDITOR.replace('answer2');
+           CKEDITOR.replace('answer3');
+           CKEDITOR.replace('answer4');
+        </script>
     </body>
 
 

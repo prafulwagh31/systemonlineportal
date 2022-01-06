@@ -54,7 +54,7 @@
 
                     <!-- Start Content-->
                     <div class="container-fluid">
-                        
+
                         <!-- start page title -->
                         <div class="row">
                             <div class="col-12">
@@ -69,8 +69,8 @@
                                     <h4 class="page-title">User List</h4>
                                 </div>
                             </div>
-                        </div>     
-                        <!-- end page title --> 
+                        </div>
+                        <!-- end page title -->
 
                         @if(session()->has('message'))
                             <div class="alert alert-success">
@@ -82,6 +82,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h2 class="header-title">User List</h2>
+                                        <button class="btn btn-primary"><a href="{{ route('exportUser') }}" style="color:white;">Export</a></button>
                                          <div class="search-container">
                                            <div align="left">
                                            <ul class="pagination justify-content-center" >
@@ -95,7 +96,7 @@
                                           </div>
                                         <div class="tab-content">
                                             <div class="tab-pane show active" id="buttons-table-preview">
-                                                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                                                <table id="" class="table table-striped dt-responsive nowrap w-100">
                                                     <thead>
                                                         <tr>
                                                             <th>Sr no:</th>
@@ -107,11 +108,11 @@
                                                             <th>State</th>
                                                             <th>Country</th>
                                                             <th>Address</th>
-                                                            
+
                                                         </tr>
                                                     </thead>
-                                                
-                                                
+
+
                                                     <tbody>
                                                     @foreach($users as $key => $user)
                                                         <tr>
@@ -125,21 +126,22 @@
                                                             <td>{{$user->country_name}}</td>
                                                             <td>{{$user->address}}</td>
                                                         </tr>
-                                                    @endforeach  
+                                                    @endforeach
                                                     </tbody>
-                                                </table>                                           
+                                                </table>
+                                                 {{ $users->links()}}
                                             </div> <!-- end preview-->
-                                            {{ $users->links()}}
-                                            
+
+
                                         </div> <!-- end tab-content-->
-                                        
+
                                     </div> <!-- end card body-->
                                 </div> <!-- end card -->
                             </div><!-- end col-->
                         </div>
                         <!-- end row-->
 
-                        
+
                     </div> <!-- container -->
 
                 </div> <!-- content -->
@@ -189,7 +191,7 @@
                         <input class="form-check-input" type="checkbox" name="color-scheme-mode" value="dark" id="dark-mode-check">
                         <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
                     </div>
-       
+
 
                     <!-- Width -->
                     <h5 class="mt-4">Width</h5>
@@ -203,7 +205,7 @@
                         <input class="form-check-input" type="checkbox" name="width" value="boxed" id="boxed-check">
                         <label class="form-check-label" for="boxed-check">Boxed</label>
                     </div>
-        
+
 
                     <!-- Left Sidebar-->
                     <h5 class="mt-4">Left Sidebar</h5>
@@ -240,7 +242,7 @@
 
                     <div class="d-grid mt-4">
                         <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
-            
+
                         <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
                             class="btn btn-danger mt-3" target="_blank"><i class="mdi mdi-basket me-1"></i> Purchase Now</a>
                     </div>

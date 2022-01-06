@@ -90,6 +90,7 @@
                                                     <thead>
                                                         <tr>
                                                             <th></th>
+                                                            <th>Exam Id</th>
                                                             <th>Question</th>
                                                             <th>Marks</th>
                                                             <th>Status</th>
@@ -102,12 +103,13 @@
                                                     @foreach($questionlist as $key => $questionlistval)
                                                         <tr>
                                                             <td>{{$questionlist->firstItem()+$key}}</td>
+                                                             <td>{{$questionlistval->exam}}</td>
                                                             <td>{{$questionlistval->question}}</td>
                                                             <td>{{$questionlistval->marks}}</td>
                                                             <td>{{$questionlistval->status}}</td>
                                                             <td class="table-action">
-                                                                <a href="" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                                <a href="" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                                <!-- <a href="" class="action-icon"> <i class="mdi mdi-pencil"></i></a> -->
+                                                                <a href="{{ route('destroyQuestion',$questionlistval->getKey())}}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                                                 <a href="{{ route('showQuestion',$questionlistval->getKey())}}" class="action-icon"> <i class="mdi mdi-eye"></i></a>
                                                             </td>
                                                         </tr>

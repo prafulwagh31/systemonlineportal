@@ -99,14 +99,50 @@
                      <button class="btn btn-secondary" style="background: #dd137b;"><a href="{{ route('profile') }}">Click</a></button>
                   </div>
                </div>
-               <div class="col-md-6 col-lg-6">
-                  <div class="service-card service-ghape">
-                     <i class="fas fa-file-alt"></i>
-                     <h4>Start Exam</h4>  
-                     <button class="btn btn-secondary" style="background: #dd137b;"><a href="{{ route('instruction') }}">Start</a></button>
-                  </div>
-               </div>
+
+                @if(!is_null($attempted))
+                    <div class="col-md-6 col-lg-6" style="filter: blur(4px);cursor: not-allowed;">
+                        <div class="service-card service-ghape">
+                            <i class="fas fa-file-alt"></i>
+                            <h4>Start Exam</h4>
+                            <button class="btn btn-secondary" style="background: #dd137b;cursor: not-allowed;">Start</button>
+                        </div>
+                    </div>
+                @elseif($profile->success == 1)
+                  <div class="col-md-6 col-lg-6" style="filter: blur(4px);cursor: not-allowed;">
+                        <div class="service-card service-ghape">
+                            <i class="fas fa-file-alt"></i>
+                            <h4>Start Exam</h4>
+                            <button class="btn btn-secondary" style="background: #dd137b;cursor: not-allowed;">Start</button>
+                        </div>
+                    </div>
+                @else
+                    <div class="col-md-6 col-lg-6" >
+                        <div class="service-card service-ghape">
+                        <i class="fas fa-file-alt"></i>
+                        <h4>Start Exam</h4>
+                        <button class="btn btn-secondary" style="background: #dd137b;"><a href="{{ route('exam-preview') }}">Start</a></button>
+                        </div>
+                    </div>
+                @endif
             </div>
+            <div class="row">
+               <div class="col-md-4 col-lg-4">
+                    <a href="https://rishiprasad.org/emag/html/346_Hindi/" target="_blank">
+                        <img src="https://rishiprasad.org/emag/html/346_Hindi/images/1.jpg" style="width:100%">
+                    </a>
+                </div>
+               <div class="col-md-4 col-lg-4">
+                    <a href="https://rishiprasad.org/emag/html/347_Hindi/" target="_blank">
+                        <img src="https://rishiprasad.org/emag/html/347_Hindi/images/1.jpg" style="width:100%">
+                    </a>
+                </div>
+               <div class="col-md-4 col-lg-4">
+                    <a href="https://rishiprasad.org/emag/html/348_Hindi/" target="_blank">
+                        <img src="https://rishiprasad.org/emag/html/348_Hindi/images/1.jpg" style="width:100%">
+                    </a>
+                </div>
+           </div>
          </div>
       </section>
       @include('Front.footer')

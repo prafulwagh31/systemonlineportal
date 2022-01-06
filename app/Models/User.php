@@ -16,15 +16,36 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $table = 'users';
+    protected $table = 'users_online';
     protected $fillable = [
+        'hallticket',
         'name',
+        'parentname',
         'email',
         'mobile',
+        'dob',
+        'age',
+        'qualification',
+        'id_proof',
+        'address',
+        'agegroup',
+        'sign',
+        'state',
+        'district',
+        'zone',
+        'pincode',
+        'city_village',
+        'tehsil',
+        'country',
+        'post',
         'password',
-        'email_verified_at',
-        'remember_token',
-        'hallticket'
+        'success',
+        'registermode',
+        'created_at',
+        'updated_at'
+
+
+
     ];
 
     /**

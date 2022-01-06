@@ -98,6 +98,7 @@
                                                                 <select name="language" id="language"  class="form-select">
                                                                     <option value=""> </option>
                                                                     <option value="English" @if(old('language',$editexam->language) == "English") selected @endif>English</option>
+                                                                    <option value="Hindi" @if(old('language',$editexam->language) == "Hindi") selected @endif>Hindi</option>
                                                                     <option value="Gujarati" @if(old('language',$editexam->language) == "Gujarati") selected @endif>Gujarati</option>
                                                                     <option value="Marathi" @if(old('language',$editexam->language) == "Marathi") selected @endif>Marathi</option>
                                                                     <option value="Kannada" @if(old('language',$editexam->language) == "Kannada") selected @endif>Kannada</option>
@@ -158,6 +159,15 @@
 
                                                         <div class="row g-2">
                                                             <div class="mb-3 col-md-6">
+                                                                <label for="inputEmail4" class="form-label">Total Marks</label>
+                                                                <input type="text" class="form-control" id="inputEmail4" name="totalmarks" value="{{ $editexam?->totalmarks}}">
+                                                                <span style="color:red;">{{ $errors->first('totalmarks') }}</span>
+                                                            </div>
+                                                           
+                                                        </div>
+
+                                                        <div class="row g-2">
+                                                            <div class="mb-3 col-md-6">
                                                                 <label for="inputEmail4" class="form-label">Available From</label>
                                                                 <input type="date" class="form-control" id="inputEmail4" name="fromdate" value="{{ $editexam?->fromdate}}">
                                                                 <span style="color:red;">{{ $errors->first('fromdate') }}</span>
@@ -171,7 +181,7 @@
 
                                                         <div class="mb-3">
                                                             <label for="inputPassword4" class="form-label">Instruction</label>
-                                                            <textarea class="form-control" name="instruction" style="height: 150px;">{{ $editexam?->instruction}}</textarea>
+                                                            <textarea class="form-control" id="seodescription" name="instruction" style="height: 150px;">{{ $editexam?->instruction}}</textarea>
                                                             <span style="color:red;">{{ $errors->first('instruction') }}</span>
                                                         </div>
 
@@ -312,6 +322,17 @@
         <!-- demo app -->
         <script src="{{ url('assets/js/pages/demo.dashboard-projects.js') }}"></script>
         <!-- end demo js-->
+
+        <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+
+        <script>
+           CKEDITOR.replace('seodescription');
+           // CKEDITOR.replace('answer1');
+           // CKEDITOR.replace('answer2');
+           // CKEDITOR.replace('answer3');
+           // CKEDITOR.replace('answer4');
+        </script>
+
 
     </body>
 

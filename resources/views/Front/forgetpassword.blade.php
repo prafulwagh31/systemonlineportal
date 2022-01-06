@@ -28,12 +28,7 @@
   <!-- Template Main CSS File -->
   <link href="{{ url('frontassets/css/style.css') }}" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Mentor - v4.3.0
-  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  
 </head>
 <style>
     :root {
@@ -180,7 +175,7 @@ body {
   <!-- End Header -->
 
 <div class="container" style="padding-top: 60px;">
-    @if(isset($type))
+   
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
@@ -195,8 +190,8 @@ body {
           </div>
           @endif
           <div class="card-body">
-            <h5 class="card-title text-center">Login</h5>
-            <form class="form-signin" method="POST" action="{{ route('user.handleLoginDOB','dob') }}">
+            <h5 class="card-title text-center">Forgot Password</h5>
+            <form class="form-signin" method="POST" action="{{ route('user.forgetPasswordLink') }}">
             {{ csrf_field() }}
               <div class="form-label-group">
                 <input type="text" id="inputMobile" class="form-control" name="mobile" placeholder="Enter mobile">
@@ -204,20 +199,16 @@ body {
                 <span style="color:red;">{{ $errors->first('mobile') }}</span>
               </div>
 
-              <div class="form-label-group">
-                <input type="text" id="inputPassword" class="form-control" name="dob" placeholder="Enter Date of Birth">
-                <label for="inputPassword">Date of Birth Ex: Day-Month-Year</label>
-                <span style="color:red;">{{ $errors->first('dob') }}</span>
-              </div>
+             
                <div class="form-inline flex">
-              <a href="{{ route('user.login')}}" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" style="width: 154px;background-color:#dd137b;border-color:#dd137b;float:right;">Sign in with password</a>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase ml-2" type="submit" style="margin-right: 3px;background-color:#dd137b;border-color:#dd137b;float:right;">Sign in</button>
+                 <p>  <a href="{{ route('user.login') }}"  style="color:#dd137b;float:left;margin-left: 20px;">Login</a></p>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase ml-2" type="submit" style="margin-right: 3px;background-color:#dd137b;border-color:#dd137b;float:right;">Submit</button>
               </div>
             
               <br><br>
               <div class="custom-control  mt-3" style="margin-left: 14px;">
-              <p> Don't have an account? <a href="https://www.rpgp.rishiprasad.org/" target="_blank" style="color:#dd137b">Registration</a></p>
-               <p> <a href="{{ route('user.forgetpassword') }}"  style="color:#dd137b">Forgot Password</a></p>
+             
+              
               </div>
               <hr class="my-4">
 
@@ -226,54 +217,7 @@ body {
         </div>
       </div>
     </div>
-    @else
-    <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-        <div class="card card-signin my-5">
-          @if(session()->has('error'))
-            <div class="alert alert-danger">
-                {{ session()->get('error') }}
-            </div>
-          @endif
-          @if(session()->has('message'))
-          <div class="alert alert-success">
-              {{ session()->get('message') }}
-          </div>
-          @endif
-          <div class="card-body">
-            <h5 class="card-title text-center">Login</h5>
-            <form class="form-signin" method="POST" action="{{ route('user.handleLogin') }}">
-            {{ csrf_field() }}
-              <div class="form-label-group">
-                <input type="text" id="inputMobile" class="form-control" name="mobile" placeholder="Enter mobile">
-                <label for="inputMobile">Mobile</label>
-                <span style="color:red;">{{ $errors->first('mobile') }}</span>
-              </div>
-
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Enter Password">
-                <label for="inputPassword">Password</label>
-                <span style="color:red;">{{ $errors->first('password') }}</span>
-              </div>
-              <div class="form-inline flex">
-                <a href="{{ route('user.loginDOB','dob')}}" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" style="width: 154px;background-color:#dd137b;border-color:#dd137b;float:right;">Sign in with dob</a>
-                <button class="btn btn-lg btn-primary btn-block text-uppercase ml-2" type="submit" style="margin-right: 3px;background-color:#dd137b;border-color:#dd137b;float:right;">Sign in</button>
-              </div>
-
-           
-              <br><br>
-              <div class="custom-control  mt-3" style="margin-left: 14px;">
-              <p> Don't have an account? <a href="https://www.rpgp.rishiprasad.org/" target="_blank" style="color:#dd137b">Registration</a></p>
-               <p> <a href="{{ route('user.forgetpassword') }}"  style="color:#dd137b">Forgot Password</a></p>
-              </div>
-              <hr class="my-4">
-
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    @endif
+    
 </div>
 
   <!-- ======= Footer ======= -->

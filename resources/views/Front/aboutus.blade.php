@@ -92,7 +92,7 @@
     </section><!-- End About Section -->
 
     <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts section-bg">
+    <!-- <section id="counts" class="counts section-bg">
       <div class="container">
 
         <div class="row counters">
@@ -120,7 +120,7 @@
         </div>
 
       </div>
-    </section><!-- End Counts Section -->
+    </section> --><!-- End Counts Section -->
 
 
 

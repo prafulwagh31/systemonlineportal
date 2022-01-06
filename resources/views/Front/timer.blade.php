@@ -26,6 +26,10 @@
 
 
 </header>
+@php
+
+$duration = 1;
+@endphp
 <script type="text/javascript">
     function startTimer(duration, display) {
 var timer = duration, minutes, seconds;
@@ -36,9 +40,10 @@ setInterval(function () {
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    display.textContent = minutes + " " + " " + seconds;
+    display.textContent = minutes + " :" + " " + seconds;
 
     if (--timer < 0) {
+
         // timer = duration;
         window.location.href="{{ route('userLogout') }}";
     }
@@ -51,13 +56,25 @@ setInterval(function () {
 window.onload = function () {
   sec  = parseInt(window.localStorage.getItem("seconds"))
   min = parseInt(window.localStorage.getItem("minutes"))
-
-  if(parseInt(min*sec)){
+  
+  if(min >= 1){
     var fiveMinutes = (parseInt(min*60)+sec);
+  }else if(sec >= 3 && min == 0){
+    var fiveMinutes = (parseInt(min*60)+sec);
+  }else if(sec <= 2 && min == 0){
+    window.location.href = " {{ route('userLogout') }}";
   }else{
-    var fiveMinutes = 60 * 30;
+    var fiveMinutes = 60 * {{ $duration }};
   }
-    // var fiveMinutes = 60 * 5;
+
+  //  if(min <= 1){
+  //   var fiveMinutes = (parseInt(min*60)+sec);
+  // }else if(sec <= 3 && min == 0){
+  //   window.location.href = " {{ route('userLogout') }}";
+  // }else{
+  //   var fiveMinutes = 60 * {{ $duration }};
+  // }
+   
   display = document.querySelector('#time');
   startTimer(fiveMinutes, display);
 };

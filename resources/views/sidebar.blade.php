@@ -80,16 +80,19 @@
                                     <li>
                                         <a href="{{ route('questionlist') }}">Question List</a>
                                     </li>
+                                    <li>
+                                        <a href="{{ route('importquestionview') }}">Import Question </a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
 
-                        <!-- <li class="side-nav-item">
-                            <a  href="#"  class="side-nav-link">
+                        <li class="side-nav-item">
+                            <a  href="{{ route('userList') }}"  class="side-nav-link">
                                 <i class="uil-user-plus"></i>
                                 <span> Users </span>
                             </a>
-                        </li> -->
+                        </li>
 
                         <li class="side-nav-item">
                             <a href="#" class="side-nav-link">
@@ -114,6 +117,9 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('socialsetting') }}">Social Setting</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('testingSettingView') }}">Testing Setting</a>
                                     </li>
                                 </ul>
                             </div>
@@ -143,3 +149,4 @@
                 <!-- Sidebar -left -->
 
             </div>
+     </div>

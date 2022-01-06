@@ -41,25 +41,44 @@
 
               <div class="section-title">
 
-                <p>Question - {{ $question->getKey()}}</p>
+                <p>Questions {{ $question->next()->serial}}</p>
               </div>
 
               <div class="row" data-aos="zoom-in" data-aos-delay="100">
-
+                @php
+               
+                   
+                    $nextquestion = $question->next()->serial + 1;
+                    $nextQuestionSerial = \App\Models\Question::whereSerial($nextquestion)->first();
+                   
+                    if(!is_null($nextQuestionSerial?->serial))
+                    {
+                        $encodeQuestion  = base64_encode($nextQuestionSerial->serial);
+                    }else
+                    {
+                        $encodeQuestion  = base64_encode(0);
+                    }   
+                    
+               
+                    $questionAttemptedWithAnswer = \App\Models\Result::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->id,
+                    'question_id' => $question->id,])->first();
+                   
+               
+                @endphp
                 <div class="col-lg-8 col-md-6 ">
-                <form action="{{route('question', ['id' => ($question->next()->getKey() + 1)])}}" method="POST">
+                <form action="{{route('question', ['id' => ($encodeQuestion)])}}" method="POST">
                     @csrf
                   <div class="course-item">
 
                     <div class="course-content">
-                     <h3><a href="#">{{ strip_tags($question->question) }}</a></h3>
+                     <h3><a href="#">{{ strip_tags($question->question) }} </a></h3>
 
                      <input type="hidden" name="user_id" value="1">
                         <input type="hidden" name="question" value="{{ $question->getKey()}}">
                         <div class="trainer d-flex justify-content-between align-items-center">
                             <div class="trainer-profile ">
                                 @foreach ($answer as $answer_val)
-                                <div class="col-lg-12"><p ><input type="radio" name="answer" id="answer" value="{{ $answer_val->id}}"> &nbsp;&nbsp;&nbsp;&nbsp;{{ strip_tags($answer_val->answer) }}</p></div>
+                                <div class="col-lg-12"><p ><input type="radio" name="answer" id="answer" value="{{ $answer_val->id}}" @if(!is_null($questionAttemptedWithAnswer?->answer_id)) @if($questionAttemptedWithAnswer?->answer_id == $answer_val->id) checked @else disabled @endif  @endif> &nbsp;&nbsp;&nbsp;&nbsp;{{ strip_tags($answer_val->answer) }}</p></div>
                                 @endforeach
                             </div>
 
@@ -85,16 +104,19 @@
                       <div class="row">
                         @foreach ($question_list as $key =>  $question_list_val)
                         @php $keydata = $key + 1;
-
+                        $encodeQuestion = base64_encode($question_list_val->serial);
+                        
                         @endphp
 
-                            @if(request()->route('id') == $question_list_val->id)
+                            @if(request()->route('id') == $encodeQuestion)
 
                             <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: blue;padding-top:5px;">{{$keydata}}</h4></div>
 
-                            @elseif(request()->route('id') > $question_list_val->id)
+                            @elseif(request()->route('id') > $encodeQuestion)
                             @php
-                            $answerChecked = \App\Models\Result::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->id,'question_id' => $keydata])->first();
+                            $questionId = $question_list_val->id;
+                            $answerChecked = \App\Models\Result::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->id,'question_id' => $questionId])->first();
+
                             @endphp
                                 @isset($answerChecked)
                                     @if(is_null($answerChecked->answer_id))
@@ -103,10 +125,26 @@
                                     <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: green;padding-top:5px;">{{$keydata}}</h4></div>
                                     @endif
                                 @else
-                                <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: green;padding-top:5px;">{{$keydata}}</h4></div>
+                                <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: #9f9999;padding-top:5px;">{{$keydata}}</h4></div>
                                 @endisset
-                            @elseif(request()->route('id') < $question_list_val->id)
+                            @elseif(request()->route('id') < $encodeQuestion)
+                            @php
+                            $questionId = $question_list_val->id;
+                            $answerChecked = \App\Models\Result::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->id,'question_id' => $questionId])->first();
+
+                            @endphp
+
+                            @isset($answerChecked)
+                                @if(is_null($answerChecked->answer_id))
+                                <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: red;padding-top:5px;">{{$keydata}}</h4></div>
+                                @else
+                                <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: green;padding-top:5px;">{{$keydata}}</h4></div>
+                                @endif
+
+                            @else
+
                             <div class="col-md-2" style="padding-top:5px;"><h4 style="background-color: #9f9999;padding-top:5px;">{{$keydata}}</h4></div>
+                            @endisset
 
                             @endif
 

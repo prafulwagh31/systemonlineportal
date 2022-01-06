@@ -25,12 +25,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <!-- Template Main CSS File -->
       <link href="{{ url('frontassets/css/style.css') }}" rel="stylesheet">
-      <!-- =======================================================
-         * Template Name: Mentor - v4.3.0
-         * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
-         * Author: BootstrapMade.com
-         * License: https://bootstrapmade.com/license/
-         ======================================================== -->
+      
    </head>
    <body>
       <!-- ======= Header ======= -->
@@ -70,7 +65,7 @@
          </section>
          <!-- End About Section -->
          <!-- ======= Counts Section ======= -->
-         <section id="counts" class="counts section-bg">
+        <!--  <section id="counts" class="counts section-bg">
             <div class="container">
                <div class="row counters">
                   <div class="col-lg-3 col-6 text-center">
@@ -91,7 +86,7 @@
                   </div>
                </div>
             </div>
-         </section>
+         </section> -->
          <!-- End Counts Section -->
          <!-- ======= Why Us Section ======= -->
          <section class="pt-5 pb-5">
