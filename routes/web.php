@@ -10,6 +10,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\AboutusController;
+use App\Http\Controllers\TermsconditionController;
+use App\Http\Controllers\FAQController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +31,34 @@ Route::get('registerdata', [AuthController::class, 'createRegister'])->name('reg
 Route::post('registerdata', [AuthController::class, 'storeRegister'])->name('storeregister');
 
 
+
+Route::get('websitesetting', [Controller::class, 'websitesetting'])->name('websitesetting');
+Route::get('pagesetting', [Controller::class, 'pagesetting'])->name('pagesetting');
+Route::get('socialsetting', [Controller::class, 'socialsetting'])->name('socialsetting');
+
+Route::get('aboutsus', [AboutusController::class, 'aboutsUs'])->name('aboutsus');
+Route::get('aboutlist', [AboutusController::class, 'aboutList'])->name('aboutlist');
+Route::post('addaboutus', [AboutusController::class, 'addAboutus'])->name('addaboutus');
+Route::get('editaboutsus/{id}', [AboutusController::class, 'editAboutus'])->name('editaboutsus');
+Route::post('updateaboutus/{id}', [AboutusController::class, 'updateAboutus'])->name('updateaboutus');
+Route::get('destroyaboutus/{id}', [AboutusController::class, 'destroyAboutus'])->name('destroyaboutus');
+
+Route::get('termscondition', [TermsconditionController::class, 'termsCondition'])->name('termscondition');
+Route::get('termconditionlist', [TermsconditionController::class, 'termconditionList'])->name('termconditionlist');
+Route::post('addtermscondition', [TermsconditionController::class, 'addtermsCondition'])->name('addtermscondition');
+Route::get('edittermscondition/{id}', [TermsconditionController::class, 'edittermsCondition'])->name('edittermscondition');
+Route::post('updatetermscondition/{id}', [TermsconditionController::class, 'updatetermsCondition'])->name('updatetermscondition');
+Route::get('destroytermscondition/{id}', [TermsconditionController::class, 'destroytermsCondition'])->name('destroytermscondition');
+
+Route::get('faqs', [FAQController::class, 'faqCreate'])->name('faqs');
+Route::get('faqlist', [FAQController::class, 'faqList'])->name('faqlist');
+Route::post('addfaqs', [FAQController::class, 'addFaqs'])->name('addfaqs');
+Route::get('editfaq/{id}', [FAQController::class, 'editFaq'])->name('editfaq');
+Route::post('updatefaq/{id}', [FAQController::class, 'updateFaq'])->name('updatefaq');
+Route::get('destroyfaq/{id}', [FAQController::class, 'destroyFaq'])->name('destroyfaq');
+
+Route::get('user-list', [Controller::class, 'userList'])->name('userList');
+Route::post('/search', [Controller::class, 'searchUser']);
 
 
 
@@ -107,7 +139,7 @@ Route::group(['middleware' => ['auth:webadmin']], function () {
     Route::get('set-answer/{id}', [Controller::class, 'showQuestion'])->name('showQuestion');
     Route::post('set-answer', [Controller::class, 'setAnswer'])->name('setAnswer');
     Route::get('question-delete/{id}', [Controller::class, 'destroyQuestion'])->name('destroyQuestion');
-    
+
 
 
 
@@ -118,7 +150,7 @@ Route::group(['middleware' => ['auth:webadmin']], function () {
     Route::post('/search', [Controller::class, 'searchUser']);
     Route::post('testing-setting', [Controller::class, 'testingUserExam'])->name('testingSetting');
     Route::get('testing-setting', [Controller::class, 'testingUserExamView'])->name('testingSettingView');
-    
+
 });
 
 
@@ -134,7 +166,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('final-answer', [ExamController::class, 'examFinal'])->name('examFinal');
     Route::post('final', [ExamController::class, 'final'])->name('final');
     Route::get('user-logout', [ExamController::class, 'userLogout'])->name('userLogout');
-    
+
 
 });
 

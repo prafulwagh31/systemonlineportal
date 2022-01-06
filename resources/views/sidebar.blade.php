@@ -120,6 +120,22 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('testingSettingView') }}">Testing Setting</a>
+                                        <a href="{{ route('aboutsus') }}">AboutUs Setting</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('aboutlist') }}">AboutUs List</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('termscondition') }}">Terms & Condition Setting</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('termconditionlist') }}">Terms & Condition List</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('faqs') }}">FAQ Setting</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('faqlist') }}">FAQ List</a>
                                     </li>
                                 </ul>
                             </div>

@@ -57,6 +57,19 @@
       <div class="container">
         <h2>Terms & Condition</h2>
         <hr class="hr-5">
+        <div class="col-md-2" style="margin-left: 79%;">
+           <select name="language" id="language"  class="form-select">
+              <option value="">Select</option>
+              <option value="English">English</option>
+              <option value="Gujarati">Gujarati</option>
+              <option value="Marathi">Marathi</option>
+              <option value="Kannada">Kannada</option>
+              <option value="Telugu">Telugu</option>
+              <option value="Oriya">Oriya</option>
+              <option value="Sindhi">Sindhi</option>
+              <option value="Bengali">Bengali</option>
+           </select>
+        </div>
       </div>
     </div><!-- End Breadcrumbs -->
 
