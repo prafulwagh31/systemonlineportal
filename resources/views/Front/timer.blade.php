@@ -28,9 +28,9 @@
 </header>
 @php
 
-$duration = 1;
+$duration = $exam->duration;
 @endphp
-{{-- <script type="text/javascript">
+<script type="text/javascript">
     function startTimer(duration, display) {
 var timer = duration, minutes, seconds;
 setInterval(function () {
@@ -42,9 +42,9 @@ setInterval(function () {
 
     display.textContent = minutes + " :" + " " + seconds;
 
-    if (--timer > 0) {
+    if (--timer < 5) {
 
-        alert('time out');
+        Livewire.emit('TimeOut')
 
     }
   console.log(parseInt(seconds))
@@ -62,7 +62,7 @@ window.onload = function () {
   }else if(sec >= 3 && min == 0){
     var fiveMinutes = (parseInt(min*60)+sec);
   }else if(sec <= 2 && min == 0){
-    window.location.href = " {{ route('userLogout') }}";
+
   }else{
     var fiveMinutes = 60 * {{ $duration }};
   }
@@ -82,73 +82,5 @@ window.onload = function () {
 
 
 
-</script> --}}
-
-<div id="divCounter"></div>
-<script type="text/javascript">
-if (sessionStorage.getItem("counter")) {
-  if (sessionStorage.getItem("counter") >= 10) {
-    var value = 0;
-  } else {
-    var value = sessionStorage.getItem("counter");
-  }
-} else {
-  var value = 0;
-}
-document.getElementById('divCounter').innerHTML = value;
-
-var counter = function () {
-  if (value >= 10) {
-    sessionStorage.setItem("counter", 0);
-    value = 0;
-  } else {
-    value = parseInt(value) + 1;
-    sessionStorage.setItem("counter", value);
-  }
-  document.getElementById('divCounter').innerHTML = value;
-};
-
-var interval = setInterval(counter, 1000);
 </script>
 
-{{-- <script type="text/javascript">
-    var timeoutHandle;
-    function countdown(minutes) {
-        var seconds = 60;
-        var mins = minutes
-        function tick() {
-            var counter = document.getElementById("time");
-            var current_minutes = mins-1
-            seconds--;
-            counter.innerHTML =
-            current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
-            if( seconds > 0 ) {
-                timeoutHandle=setTimeout(tick, 1000);
-            } else {
-                if(mins > 1){
-                   // countdown(mins-1);   never reach “00″ issue solved:Contributed by Victor Streithorst
-                   setTimeout(function () { countdown(mins - 1); }, 1000);
-                }
-            }
-        }
-        tick();
-    }
-    countdown('{{ $duration}}');
-</script>
-
-    <!-- script for disable url -->
-<script type="text/javascript">
-    var time= '{{ $duration}}';
-    var realtime = time*60000;
-    setTimeout(function () {
-        alert('Time Out');
-        window.onload = function() {
-            Livewire.on('TimeOut', () => {
-            // Code Here
-            });
-        }
-
-    },
-    realtime);
-
-</script> --}}

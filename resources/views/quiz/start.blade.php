@@ -38,6 +38,26 @@
             {
                 display: flex; justify-content: center; align-items: center; background-color: black; position: fixed; top: 0px; left: 0px; z-index: 9999; width: 100%; height: 100%; opacity: .75;
             }
+            .activeclass
+            {
+                background-color: #c30c6a;
+                padding: 10px;
+            }
+            .completeclass
+            {
+                background-color: green;
+                padding: 10px;
+            }
+            .incomplete
+            {
+                background-color: red;
+                padding: 10px;
+            }
+            .normalclass
+            {
+                background-color: #dd137b;
+                padding: 10px;
+            }
         </style>
         @livewireStyles
     </head>

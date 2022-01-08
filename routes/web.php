@@ -167,6 +167,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('exam-preview', [ExamController::class, 'examPreview'])->name('exam-preview');
     Route::get('final-answer', [ExamController::class, 'examFinal'])->name('examFinal');
     Route::post('final', [ExamController::class, 'final'])->name('final');
+    Route::get('time-out-final', [ExamController::class, 'TimeOutfinal'])->name('TimeOutfinal');
+
     Route::get('user-logout', [ExamController::class, 'userLogout'])->name('userLogout');
 
     Route::get('exam-start', [QuizController::class, 'index'])->name('startQuiz');

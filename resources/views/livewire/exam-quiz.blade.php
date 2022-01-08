@@ -1,4 +1,5 @@
 <div>
+
     <div class="">
         <h3>Question {{ Session::get('serial_id') }} of {{ $questionCount }}</h3>
     </div>
@@ -13,6 +14,8 @@
                             @php
                                 $questionAttemptedWithAnswer = \App\Models\Result::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->id,
                                 'question_id' => $question->id,])->first();
+                                $finalAnsweArray = $finalAnswers;
+                                $finalAnsweArrayReview = $finalAnswers;
                             @endphp
 
 
@@ -27,7 +30,26 @@
                                 <div class="trainer-profile ">
                                     @foreach ($question->answersArray as $answerkey =>  $answer)
                                         <p><input type="radio" name="answer" id="answer" wire:click="$emitUp('SetAnswer','{{ $answerkey }}','{{ $answer->getKey()}}')"
-                                              @if(isset($questionAttemptedWithAnswer->answer_id)) @if($questionAttemptedWithAnswer->answer_id == $answer->id)  checked @else disabled @endif @else   @endif>
+                                                @if(isset($questionAttemptedWithAnswer->answer_id))
+                                                    @if($questionAttemptedWithAnswer->answer_id == $answer->id)
+                                                        checked
+                                                    @else
+                                                        disabled
+                                                    @endif
+                                                @elseif(isset($finalAnsweArray))
+                                                    @foreach($finalAnsweArray as $finalAnsweArrayVal)
+                                                        @if($finalAnsweArrayVal['question_id'] == $question->id)
+                                                            @if($finalAnsweArrayVal['answer_id'] == $answer->id)
+                                                                checked
+                                                            @else
+                                                                disabled
+                                                            @endif
+                                                        @endif
+                                                    @endforeach
+                                                @else
+                                                @endif
+
+                                              >
                                             &nbsp;&nbsp;&nbsp;&nbsp;{{ strip_tags($answer->answer) }}</p>
                                     @endforeach
                                 </div>
@@ -51,17 +73,47 @@
                     <h3><a href="course-details.html">Questions</a></h3>
                         <div class="row">
                             @foreach ($questions as $key => $question_list_val)
+                                @php
+                                    $questionAttemptedWithAnswerReview = \App\Models\Result::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->id,
+                                    'question_id' => $question_list_val->id])->first();
 
-                                @if (Session::get('serial_id') == $question_list_val->serial)
-                                    <div class="col-md-2" style="padding-top:5px;">
-                                        <h4 style="background-color: #b10b60;padding-top:5px;">{{ $question_list_val->serial }}</h4>
-                                    </div>
-                                @else
+                                    if(isset($questionAttemptedWithAnswerReview->answer_id))
+                                    {
+                                        $class = 'completeclass';
+                                    } else {
+                                        $class = 'incomplete';
+                                    }
+
+                                    if(Session::get('serial_id') == $question_list_val->serial)
+                                    {
+                                        $class = 'activeclass';
+                                    } elseif (isset($finalAnsweArrayReview))
+                                    {
+                                        foreach($finalAnsweArrayReview as $finalAnsweArrayReviewVal)
+                                        {
+                                            if($finalAnsweArrayReviewVal['question_id'] == $question_list_val->id)
+                                            {
+                                                if($finalAnsweArrayReviewVal['answer_id'] != '')
+                                                {
+                                                    $class = 'completeclass';
+                                                }else {
+                                                    $class = 'incomplete';
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        $class = 'normalclass';
+                                    }
+                                @endphp
 
                                 <div class="col-md-2" style="padding-top:5px;">
-                                    <h4 style="background-color: #e5127e;padding-top:5px;">{{ $question_list_val->serial }}</h4>
+                                    <h5 class="@isset($class) {{ $class }} @endisset">
+                                        <a wire:click="DirectQuestion('{{ $question_list_val->serial  }}')">
+                                            {{ $question_list_val->serial }}
+                                        </a>
+                                    </h5>
                                 </div>
-                                @endif
                             @endforeach
                         </div>
                         <div class="trainer justify-content-between align-items-center">
@@ -70,9 +122,5 @@
                 </div>
             </div>
         </div>
-
-
     </div>
-
-
 </div>

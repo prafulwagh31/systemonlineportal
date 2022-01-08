@@ -260,6 +260,45 @@ class ExamController extends BaseController
         return view('Front.final');
     }
 
+
+    public function TimeOutfinal()
+    {
+        $userAttempeteds = Result::whereUserId(Auth::user()->id)->get();
+        $correctQuestion = 0;
+        $marks = 0;
+        foreach($userAttempeteds as $key => $userAttempeted)
+        {
+            $finalkey = $key + 1;
+            $question = Question::find($userAttempeted->question_id);
+            $correctAnswerFound = CorrectAnswer::whereQuestionId($userAttempeted->question_id)->first();
+            if($correctAnswerFound->answer_id == $userAttempeted->answer_id)
+            {
+                $correctQuestion += 1;
+                $marks += $question->marks;
+            }
+        }
+        UserExamAttempted::updateOrCreate([
+            'user_id' => Auth::user()->id,
+            'exam_id' => session('exam_id'),
+        ],[
+            'user_id' => Auth::user()->id,
+            'exam_id' => session('exam_id'),
+            'status' => 'attempted'
+        ]);
+
+        FinalResult::create([
+                'user_id' => Auth::user()->id,
+                'total_mark' => $marks,
+                'correct_question' => $correctQuestion
+            ]);
+
+        session()->forget('serial_id');
+
+        Auth::logout();
+
+        return view('Front.final');
+    }
+
     public function userLogout()
     {
 

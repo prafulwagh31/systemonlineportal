@@ -17,7 +17,7 @@ class ExamQuiz extends Component
     public $finalAnswers = [];
 
     protected $listeners = [
-        'SubmitQuestion' ,'SetAnswer','TimeOut'
+        'SubmitQuestion' ,'SetAnswer','TimeOut','DirectQuestion'
     ];
     public function mount($questions)
     {
@@ -31,9 +31,14 @@ class ExamQuiz extends Component
         $this->answer = $answerFinal;
     }
 
+    public function DirectQuestion($questionSerial)
+    {
+         session(['serial_id' => $questionSerial]);
+    }
+
     public function TimeOut()
     {
-        dd($this->finalAnswers);
+
         foreach($this->finalAnswers as $quiz)
         {
 
@@ -47,7 +52,7 @@ class ExamQuiz extends Component
             ]);
         }
 
-        return redirect()->route('Final');
+        return redirect()->route('TimeOutfinal');
     }
     public function SubmitQuestion($key,$question_id,$serial)
     {

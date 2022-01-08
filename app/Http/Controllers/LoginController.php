@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Models\AuditLog;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use DB;
@@ -16,6 +14,7 @@ class LoginController extends BaseController
 
     public function login()
     {
+        Auth::logout();
         if(Auth::user())
         {
             return redirect()->route('user');
@@ -37,10 +36,23 @@ class LoginController extends BaseController
         {
         	if (Auth::loginUsingId($user->getKey())) {
 	            if (Auth::user()->id) {
-	                return redirect()->intended('/user');
+                    $mac = exec('getmac');
+                    $macAddress = strtok($mac, ' ');
+
+                    AuditLog::updateOrCreate([
+                        'user_id' => Auth::user()->id,
+
+                    ],[
+                        'user_id' => Auth::user()->id,
+                        'ip_address' => $request->ip(),
+                        'mac_address' => $macAddress,
+                    ]);
+
+	                return redirect()->route('user');
 	            }else
 	            {
-	                return redirect()->route('index');
+
+	                return redirect()->route('user.login');
 	            }
         	}
         	return redirect('login')->with('error', 'Woops! You have entered invalid credentials');
@@ -78,10 +90,22 @@ class LoginController extends BaseController
         {
             if (Auth::loginUsingId($user->getKey())) {
                 if (Auth::user()->id) {
-                    return redirect()->intended('/user');
+                    $mac = exec('getmac');
+                    $macAddress = strtok($mac, ' ');
+
+                    AuditLog::updateOrCreate([
+                        'user_id' => Auth::user()->id,
+
+                    ],[
+                        'user_id' => Auth::user()->id,
+                        'ip_address' => $request->ip(),
+                        'mac_address' => $macAddress,
+                    ]);
+
+                    return redirect()->route('user');
                 }else
                 {
-                    return redirect()->route('index');
+                    return redirect()->route('user.login');
                 }
             }
             return redirect('login')->with('error', 'Woops! You have entered invalid credentials');
