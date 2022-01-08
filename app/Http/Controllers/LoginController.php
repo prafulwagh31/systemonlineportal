@@ -15,7 +15,7 @@ class LoginController extends BaseController
 {
 
     public function login()
-    { 
+    {
         if(Auth::user())
         {
             return redirect()->route('user');
@@ -49,7 +49,7 @@ class LoginController extends BaseController
         	return redirect('login')->with('error', 'Woops! You have entered invalid credentials');
         }
 
-        
+
     }
 
     public function loginDOB(Request $request)
@@ -90,11 +90,12 @@ class LoginController extends BaseController
             return redirect('login')->with('error', 'Woops! You have entered invalid credentials');
         }
 
-        
+
     }
-    
+
     public function logout()
     {
+        session()->forget('serial_id');
         Auth::logout();
         return redirect('login');
     }
@@ -124,15 +125,15 @@ By Rishi Prasad";
                 curl_setopt($crl, CURLOPT_FRESH_CONNECT, true);
                 curl_setopt($crl, CURLOPT_RETURNTRANSFER, true);
                 $response = curl_exec($crl);
-              
+
                 if(!$response){
                   die('Error: "' . curl_error($crl) . '" - Code: ' . curl_errno($crl));
-                }else 
-                { 
+                }else
+                {
                     // echo 1;
-                }   
+                }
                 curl_close($crl);
-            
+
             return redirect()->route('user.forgetpassword')->with('message','Login credentials sent to your registered mobile number');
         }else
         {

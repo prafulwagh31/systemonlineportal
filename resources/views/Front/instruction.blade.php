@@ -35,7 +35,7 @@
      @php
         $language = Session::get('language');
         $age = \Illuminate\Support\Facades\Auth::user()->age;
-       
+
         if($age <= 12)
         {
           $agegroup = 'Under 12 years';
@@ -74,20 +74,20 @@
             </div>
          </div>
          <div class="next" style="text-align: center;">
-           
+
             @if(!is_null($exam))
-             @php  
-                    $question = \App\Models\Question::whereExam($exam->id)->first(); 
+             @php
+                    $question = \App\Models\Question::whereExam($exam->id)->first();
                     $encodeQuestion = base64_encode($question?->serial);
              @endphp
             @endif
-          
+
             @if(!is_null($question))
-            <a href="{{route('exam', ['id' => $encodeQuestion])}}" class="get-started-btn">Next</a>
+            <a href="{{ route('startQuiz') }}" class="get-started-btn">Next</a>
             @else
             <span style="color:red"><b>Exam not found with this langauge and agegroup.</b></span>
             @endif
-            
+
          </div>
       </div>
    </div>

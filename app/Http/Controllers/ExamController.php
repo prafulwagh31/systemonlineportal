@@ -32,7 +32,7 @@ class ExamController extends BaseController
             'question_id' => $request->input('question'),
             'answer_id'  => $request->input('answer'),
         ]);
-        
+
         QuestionAttemptedUsers::updateOrCreate([
             'user_id' => Auth::user()->id,
             'question_id' => $request->input('question'),
@@ -44,7 +44,7 @@ class ExamController extends BaseController
         $questionDecode = base64_decode($id);
         $language = Session::get('language');
         $age = \Illuminate\Support\Facades\Auth::user()->age;
-       
+
         if($age <= 12)
         {
           $agegroup = 'Under 12 years';
@@ -61,7 +61,7 @@ class ExamController extends BaseController
         $exam = Exam::where(['agegroup' => $agegroup,'language' => $language])->first();
         $question = Question::whereExam($exam->id)->whereSerial($questionDecode)->first();
 
-        
+
 
         if(is_null($question))
         {
@@ -92,7 +92,7 @@ class ExamController extends BaseController
     {
         $language = Session::get('language');
         $age = \Illuminate\Support\Facades\Auth::user()->age;
-       
+
         if($age <= 12)
         {
           $agegroup = 'Under 12 years';
@@ -108,10 +108,10 @@ class ExamController extends BaseController
         }
         $exam = Exam::where(['agegroup' => $agegroup,'language' => $language])->first();
         $request->session()->put('examId', $exam->getKey());
-      
+
         $question = Question::whereExam($exam->id)->first();
         // $questionForward = Question::whereExam($exam->id)->get();
-       
+
         $answer = $question->answers()->get();
         $question_list = Question::whereExam($exam->id)->get();
 
@@ -130,7 +130,7 @@ class ExamController extends BaseController
 
         $language = Session::get('language');
         $age = \Illuminate\Support\Facades\Auth::user()->age;
-       
+
         if($age <= 12)
         {
           $agegroup = 'Under 12 years';
@@ -145,22 +145,12 @@ class ExamController extends BaseController
           $agegroup = 'Above 30 years';
         }
         $exam = Exam::where(['agegroup' => $agegroup,'language' => $language])->first();
-        
-      
+
         $question = Question::whereId($id)->first();
+        $request->session()->put('serial_id', $question->serial);
+
         // $questionForward = Question::whereExam($exam->id)->get();
-       
-        $answer = $question->answers()->get();
-        $question_list = Question::whereExam($exam->id)->get();
-
-
-        return view('Front.question', [
-            'question' => $question ,
-            'answer'   =>  $answer,
-            'question_list' => $question_list,
-            'exam' => $exam,
-            'questionForward' => $question
-        ]);
+        return redirect()->route('startQuiz');
     }
     public function user()
     {
@@ -183,7 +173,7 @@ class ExamController extends BaseController
         ]);
         $language =$request->input('language');
         $age = \Illuminate\Support\Facades\Auth::user()->age;
-       
+
         if($age <= 12)
         {
           $agegroup = 'Under 12 years';
@@ -198,6 +188,7 @@ class ExamController extends BaseController
           $agegroup = 'Above 30 years';
         }
         $exam = Exam::where(['agegroup' => $agegroup,'language' => $language])->first();
+        $request->session()->put('exam_id', $exam->id);
 
         $request->session()->put('language', $request->input('language'));
         return view('Front.instruction',compact('exam'));
@@ -207,7 +198,7 @@ class ExamController extends BaseController
     {
         $language = Session::get('language');
         $age = \Illuminate\Support\Facades\Auth::user()->age;
-       
+
         if($age <= 12)
         {
           $agegroup = 'Under 12 years';
@@ -264,7 +255,7 @@ class ExamController extends BaseController
                 'total_mark' => $marks,
                 'correct_question' => $correctQuestion
             ]);
-
+        session()->forget('serial_id');
         Auth::logout();
         return view('Front.final');
     }
@@ -305,7 +296,8 @@ class ExamController extends BaseController
             'exam_id' => $exam->id,
             'status' => 'attempted'
         ]);
-        
+
+        session()->forget('serial_id');
         Auth::logout();
         return view('Front.final');
     }

@@ -17,13 +17,18 @@ class Question extends Model
     {
         // DB::enableQueryLog();
        return static::where(['serial'=> $this->getSerial()->serial,'exam' => session('examId')])->first();
-        
+
         // print_r(DB::getQueryLog());die;
     }
 
     public function answers()
     {
-        return $this->belongsTo(Questionwithanswer::class,'id','questionid');
+        return $this->belongsToMany(Questionwithanswer::class,'id','questionid');
+    }
+
+    public function answersArray()
+    {
+        return $this->hasMany(Questionwithanswer::class,'questionid');
     }
 
     public function getSerial()

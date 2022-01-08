@@ -13,6 +13,8 @@ use App\Http\Controllers\ImportController;
 use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\TermsconditionController;
 use App\Http\Controllers\FAQController;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\SampleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -167,6 +169,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('final', [ExamController::class, 'final'])->name('final');
     Route::get('user-logout', [ExamController::class, 'userLogout'])->name('userLogout');
 
-
+    Route::get('exam-start', [QuizController::class, 'index'])->name('startQuiz');
 });
 
