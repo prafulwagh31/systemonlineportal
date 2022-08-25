@@ -15,7 +15,6 @@ use App\Http\Controllers\TermsconditionController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\SampleController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,8 +30,6 @@ use App\Http\Controllers\SampleController;
 
 Route::get('registerdata', [AuthController::class, 'createRegister'])->name('registerdata');
 Route::post('registerdata', [AuthController::class, 'storeRegister'])->name('storeregister');
-
-
 
 Route::get('websitesetting', [Controller::class, 'websitesetting'])->name('websitesetting');
 Route::get('pagesetting', [Controller::class, 'pagesetting'])->name('pagesetting');
